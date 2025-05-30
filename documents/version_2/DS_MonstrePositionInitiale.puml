@@ -1,0 +1,38 @@
+@startuml Fonctionnalité 1 - Position initiale du monstre
+title Fonctionnalité 1 : Donner une position initiale au monstre
+
+participant LabyJeu
+participant Labyrinthe
+participant "Fichier laby" as Fichier
+participant Monstre
+
+LabyJeu -> Labyrinthe : new Labyrinthe("laby1.txt")
+activate Labyrinthe
+
+Labyrinthe -> Fichier : lecture du fichier
+activate Fichier
+
+loop Pour chaque ligne du fichier
+    loop Pour chaque caractère de la ligne
+        alt caractère == 'M'
+            Labyrinthe -> Monstre : new Monstre(x, y)
+            activate Monstre
+            Monstre --> Labyrinthe : monstre créé
+            deactivate Monstre
+            Labyrinthe -> Labyrinthe : this.monstre = new Monstre(x, y)
+            note right : Position initiale définie
+        else caractère == 'P'
+            Labyrinthe -> Labyrinthe : this.pj = new Perso(x, y)
+        else caractère == 'X'
+            Labyrinthe -> Labyrinthe : this.murs[x][y] = true
+        end
+    end
+end
+
+Fichier --> Labyrinthe : fichier lu
+deactivate Fichier
+
+Labyrinthe --> LabyJeu : labyrinthe avec monstre créé
+deactivate Labyrinthe
+
+@enduml

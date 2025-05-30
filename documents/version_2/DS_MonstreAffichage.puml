@@ -1,0 +1,31 @@
+@startuml Fonctionnalité 2 - Affichage du monstre
+title Fonctionnalité 2 : Afficher le monstre
+
+participant MoteurJeu
+participant LabyDessin
+participant LabyJeu
+participant Labyrinthe
+
+MoteurJeu -> LabyDessin : dessinerJeu(labyJeu, canvas)
+activate LabyDessin
+
+LabyDessin -> LabyJeu : récupération du jeu
+LabyDessin -> Labyrinthe : getLength(), getLengthY()
+
+loop Pour chaque case du labyrinthe
+    LabyDessin -> Labyrinthe : getMur(x, y)
+    alt mur présent
+        LabyDessin -> LabyDessin : dessiner carré noir
+    end
+end
+
+LabyDessin -> LabyDessin : dessiner cercle rouge (personnage)
+note right : Position (pj.x, pj.y)
+
+LabyDessin -> LabyDessin : dessiner cercle violet (monstre)
+note right : Position (monstre.x, monstre.y)
+
+LabyDessin --> MoteurJeu : rendu terminé
+deactivate LabyDessin
+
+@enduml

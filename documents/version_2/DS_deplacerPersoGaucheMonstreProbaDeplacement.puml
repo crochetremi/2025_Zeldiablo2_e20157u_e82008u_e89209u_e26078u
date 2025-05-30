@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Main -> Labyrinthe : deplacerPerso("GAUCHE")
+
+' Déplacement du personnage
+Labyrinthe --> Perso : this.pj.x
+Labyrinthe <-- Perso : int
+Labyrinthe --> Perso : this.pj.y
+Labyrinthe <-- Perso : int
+
+Labyrinthe --> Labyrinthe : getSuivant(x,y,"GAUCHE")
+Labyrinthe <-- Labyrinthe : int[]
+
+Labyrinthe --> Monstre : this.monstre.x
+Labyrinthe <-- Monstre : int
+Labyrinthe --> Monstre : this.monstre.y
+Labyrinthe <-- Monstre : int
+
+alt pas de collision avec mur et monstre
+    Labyrinthe --> Perso : this.pj.x = suivante[0]
+    Labyrinthe <-- Perso :
+    Labyrinthe --> Perso : this.pj.y = suivante[1]
+    Labyrinthe <-- Perso :
+end
+
+' Déplacement aléatoire du monstre
+alt probabilité < 10%
+    Labyrinthe -> Labyrinthe : deplacerMonstre()
+    activate Labyrinthe
+
+    Labyrinthe --> Monstre : this.monstre.x
+    Labyrinthe <-- Monstre : int
+    Labyrinthe --> Monstre : this.monstre.y
+    Labyrinthe <-- Monstre : int
+
+    Labyrinthe --> Labyrinthe : getSuivant(x,y,actionAleatoire)
+    Labyrinthe <-- Labyrinthe : int[]
+
+    alt pas de collision avec mur
+        Labyrinthe --> Monstre : this.monstre.x = suivante[0]
+        Labyrinthe <-- Monstre :
+        Labyrinthe --> Monstre : this.monstre.y = suivante[1]
+        Labyrinthe <-- Monstre :
+    end
+
+    deactivate Labyrinthe
+end
+
+Main <-- Labyrinthe
+
+@enduml

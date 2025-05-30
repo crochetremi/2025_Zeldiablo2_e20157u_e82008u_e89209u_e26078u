@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Main -> Labyrinthe : deplacerPerso("GAUCHE")
+Labyrinthe --> Perso : this.pj.x
+Labyrinthe <-- Perso : int
+Labyrinthe --> Perso : this.pj.y
+Labyrinthe <-- Perso : int
+
+Labyrinthe --> Labyrinthe : getSuivant(x,y,"GAUCHE")
+Labyrinthe <-- Labyrinthe : int[]
+
+Labyrinthe --> Monstre : this.monstre.x
+Labyrinthe <-- Monstre : int
+Labyrinthe --> Monstre : this.monstre.y
+Labyrinthe <-- Monstre : int
+
+alt suivante pas sur case monstre
+    Labyrinthe --> Perso : this.pj.x = suivante[0]
+    Labyrinthe <-- Perso :
+    Labyrinthe --> Perso : this.pj.y = suivante[1]
+    Labyrinthe <-- Perso :
+end
+
+Main <-- Labyrinthe
+
+@enduml
