@@ -1,0 +1,104 @@
+@startuml
+!theme plain
+
+actor User
+participant MainLaby
+participant LabyJeu
+participant LabyDessin
+participant MoteurJeu
+participant Labyrinthe
+participant Perso
+
+User -> MainLaby : main(args)
+activate MainLaby
+
+note over MainLaby : Configuration initiale\nwidth = 800\nheight = 600\npFPS = 20
+
+MainLaby -> LabyJeu : new LabyJeu()
+activate LabyJeu
+
+LabyJeu -> LabyJeu : init()
+activate LabyJeu
+
+LabyJeu -> Labyrinthe : new Labyrinthe("zeldiablo/labySimple/laby1.txt")
+activate Labyrinthe
+
+note over Labyrinthe : Lecture du fichier\nCréation du tableau murs[][]
+Labyrinthe -> Perso : new Perso(x, y)
+activate Perso
+Perso --> Labyrinthe : perso créé
+deactivate Perso
+
+Labyrinthe --> LabyJeu : labyrinthe créé
+deactivate Labyrinthe
+
+LabyJeu -> Labyrinthe : pj
+LabyJeu -> LabyJeu : this.perso = laby.pj
+deactivate LabyJeu
+
+LabyJeu --> MainLaby : labyJeu créé
+deactivate LabyJeu
+
+MainLaby -> LabyDessin : new LabyDessin()
+activate LabyDessin
+LabyDessin --> MainLaby : labyDessin créé
+deactivate LabyDessin
+
+MainLaby -> MoteurJeu : setTaille(width, height)
+activate MoteurJeu
+MoteurJeu --> MainLaby : taille configurée
+deactivate MoteurJeu
+
+MainLaby -> MoteurJeu : setFPS(pFPS)
+activate MoteurJeu
+MoteurJeu --> MainLaby : FPS configuré
+deactivate MoteurJeu
+
+MainLaby -> MoteurJeu : launch(labyJeu, labyDessin)
+activate MoteurJeu
+
+note over MoteurJeu : Démarre la boucle de jeu\n- Gestion des événements clavier\n- Appels périodiques à update() et dessinerJeu()
+
+loop Boucle de jeu (20 FPS)
+    MoteurJeu -> LabyJeu : update(secondes, clavier)
+    activate LabyJeu
+
+    alt Si touche pressée
+        LabyJeu -> Labyrinthe : deplacerPerso(direction)
+        activate Labyrinthe
+        Labyrinthe -> Labyrinthe : getSuivant(x, y, action)
+        Labyrinthe -> Labyrinthe : vérifier collision murs[][]
+
+        opt Si pas de mur
+            Labyrinthe -> Perso : mise à jour position
+            activate Perso
+            Perso --> Labyrinthe : position mise à jour
+            deactivate Perso
+        end
+
+        Labyrinthe --> LabyJeu : déplacement effectué
+        deactivate Labyrinthe
+    end
+
+    LabyJeu --> MoteurJeu : update terminé
+    deactivate LabyJeu
+
+    MoteurJeu -> LabyDessin : dessinerJeu(labyJeu, canvas)
+    activate LabyDessin
+
+    LabyDessin -> LabyJeu : récupération données
+    LabyDessin -> Labyrinthe : getLength(), getLengthY(), getMur(x,y)
+    LabyDessin -> Perso : getX(), getY()
+
+    note over LabyDessin : Rendu graphique:\n- Fond gris\n- Murs noirs\n- Personnage rouge
+
+    LabyDessin --> MoteurJeu : rendu terminé
+    deactivate LabyDessin
+end
+
+note over MoteurJeu : Jeu en cours d'exécution\nAttente interactions utilisateur
+
+deactivate MoteurJeu
+deactivate MainLaby
+
+@enduml

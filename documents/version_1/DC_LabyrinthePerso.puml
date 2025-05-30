@@ -1,0 +1,38 @@
+@startuml
+
+class Labyrinthe{
+
+    + {static} final char MUR = 'X'
+    + {static} final char PJ = 'P'
+    + {static}final char VIDE = '.'
+
+
+    + {static} final String HAUT = "Haut"
+    + {static}final String BAS = "Bas"
+    + {static} final String GAUCHE = "Gauche"
+    + {static} final String DROITE = "Droite"
+
+    + Perso pj
+
+    + boolean[][] murs
+
+    + {static} getSuivant(int, int; String) : int[]
+    + deplacerPerso(String ) :
+    + etreFini() : boolean
+    + getLengthY() : int
+    + getLength() : int
+    + getMur(int, int) : boolean
+}
+
+class Perso{
+    int x
+    int y
+
+    + etrePresent(int, int) : boolean
+    + getX() : int
+    + getY() : int
+}
+
+Labyrinthe "1" --> "1" Perso : contient
+
+@enduml

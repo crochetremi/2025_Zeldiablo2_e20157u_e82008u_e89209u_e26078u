@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Main -> Labyrinthe : deplacerPerso("GAUCHE")
+Labyrinthe --> Perso : this.pj.x
+Labyrinthe <-- Perso : int
+Labyrinthe --> Perso : this.pj.y
+Labyrinthe <-- Perso : int
+
+Labyrinthe --> Labyrinthe : getSuivant(x,y,"GAUCHE")
+Labyrinthe <-- Labyrinthe : int[]
+
+Labyrinthe --> Perso : this.pj.x
+Labyrinthe <-- Perso :
+Labyrinthe --> Perso : this.pj.y
+Labyrinthe <-- Perso :
+
+Main <-- Labyrinthe
+
+
+@enduml
