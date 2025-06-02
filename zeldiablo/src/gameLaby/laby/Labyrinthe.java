@@ -183,7 +183,7 @@ public class Labyrinthe {
         String action = actions[(int) (Math.random() * actions.length)];
         // calcule case suivante
         int[] suivante = getSuivant(courante[0], courante[1], action);
-        if(!this.murs[suivante[0]][suivante[1]]) {
+        if(!this.murs[suivante[0]][suivante[1]] && !(suivante[0] == pj.x && suivante[1] == pj.y)){
             // on met a jour monstre
             this.monstre.x = suivante[0];
             this.monstre.y = suivante[1];

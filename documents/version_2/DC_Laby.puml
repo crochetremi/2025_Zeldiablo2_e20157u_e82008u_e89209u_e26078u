@@ -14,7 +14,8 @@ package "gameLaby.laby" {
     class LabyJeu {
         +laby : Labyrinthe
         +perso : Perso
-        +LabyJeu()
+        +LabyJeu():
+        +LabyJeu(String):
         +update(double secondes, Clavier clavier) : void
         +init() : void
         +etreFini() : boolean

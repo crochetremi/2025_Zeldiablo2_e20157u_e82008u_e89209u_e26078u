@@ -3,7 +3,7 @@ package gameLaby.laby;
 public class Monstre {
 
     /**
-     * position du personnage
+     * position du monstre
      */
     int x, y;
 
