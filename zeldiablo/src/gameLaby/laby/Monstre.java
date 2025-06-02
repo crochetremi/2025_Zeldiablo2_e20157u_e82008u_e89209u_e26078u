@@ -33,4 +33,44 @@ public class Monstre extends Personnage {
             }
         }
     }
+
+    public void deplacerVersHeros() {
+        String choix = choisirDeplacement();
+        this.deplacer(choix);
+    }
+
+    public String choisirDeplacement() {
+        int[] calcul = calculerDistance();
+
+        if(calcul[0] == 0) {
+            if(calcul[1] > 0) {
+                return Labyrinthe.HAUT;
+            } else {
+                return Labyrinthe.BAS;
+            }
+        } else {
+            if(calcul[1] == 0) {
+                return Labyrinthe.GAUCHE;
+            } else {
+                return Labyrinthe.DROITE;
+            }
+        }
+    }
+
+    public int[] calculerDistance() {
+        int Px = this.laby.pj.getX();
+        int Py = this.laby.pj.getY();
+
+        int Mx = this.getX();
+        int My = this.getY();
+
+        int diffx = Px - Mx;
+        int diffy = Py - My;
+
+        if(diffx < diffy) {
+            return new int[]{1, Py};
+        } else {
+            return new int[]{0, Px};
+        }
+    }
 }
