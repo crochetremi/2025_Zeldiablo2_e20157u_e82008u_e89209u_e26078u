@@ -3,9 +3,14 @@
 
 autonumber
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+Main -> Monstre: deplacerMonstre()
+alt heroProximite = true
+Monstre -> Monstre : attaquerMonstre(cible, degat)
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+else attaque = true
+
+end
+
+
+
 @enduml
