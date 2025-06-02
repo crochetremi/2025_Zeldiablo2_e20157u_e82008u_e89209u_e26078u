@@ -47,7 +47,7 @@ class TestLaby {
         for (String direction : directions) {
             int[] suivant = Labyrinthe.getSuivant(initialX, initialY, direction);
             if (laby.murs[suivant[0]][suivant[1]]) {
-                laby.deplacerPerso(direction);
+                laby.pj.deplacer(direction);
                 // Vérifie que le personnage n'a pas bougé
                 assertEquals(initialX, laby.pj.x);
                 assertEquals(initialY, laby.pj.y);
@@ -67,7 +67,7 @@ class TestLaby {
         int initialY = laby.pj.y;
 
         // Tente de déplacer le personnage vers le monstre
-        laby.deplacerPerso(Labyrinthe.DROITE);
+        laby.pj.deplacer(Labyrinthe.DROITE);
 
         // Vérifie que le personnage n'a pas bougé
         assertEquals(initialX, laby.pj.x);
