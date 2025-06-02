@@ -3,9 +3,25 @@
 
 autonumber
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+Main -> Monstre : deplacerVersHeros()
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Monstre -> Monstre : calculerDistance()
+
+
+activate Monstre
+
+Monstre -> Perso : getX()
+activate Perso
+Monstre <-- Perso : int
+deactivate Perso
+
+Monstre -> Perso : getY()
+activate Perso
+Monstre <-- Perso : int
+deactivate Perso
+
+Monstre <-- Monstre : int[]
+deactivate Monstre
+
+
 @enduml
