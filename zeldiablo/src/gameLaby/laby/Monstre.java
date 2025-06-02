@@ -10,13 +10,16 @@ public class Monstre extends Personnage {
         return actions[(int) (Math.random() * actions.length)];
     }
 
-    public void deplacer(String action) {
-        deplacerAleatoire();
+    public void deplacerAleatoire(){
+        int probabilite = (int) (Math.random() * 100);
+        if(probabilite < 50) {
+            String action = deplacementAleatoire();
+            this.deplacer(action);
+        }
     }
 
-    public void deplacerAleatoire() {
-
-        String action = deplacementAleatoire();
+    @Override
+    public void deplacer(String action) {
 
         // case courante
         int[] courante = {this.x, this.y};
@@ -24,22 +27,23 @@ public class Monstre extends Personnage {
         // calcule case suivante
         int[] suivante = Labyrinthe.getSuivant(courante[0], courante[1], action);
 
-        int proba = (int) (Math.random() * 100);
-        // vérifie si le déplacement est possible
-        if(proba < 20){
-            if(!this.laby.getMur(suivante[0], suivante[1]) && !(suivante[0] == this.laby.pj.x && suivante[1] == this.laby.pj.y)){
+            if(!this.laby.getMur(suivante[0], suivante[1]) &&
+                    !(suivante[0] == this.laby.pj.x && suivante[1] == this.laby.pj.y)){
                 this.x = suivante[0];
                 this.y = suivante[1];
             }
         }
-    }
 
-    public void deplacerVersHeros() {
-        String choix = choisirDeplacement();
-        this.deplacer(choix);
-    }
+}
 
-    public String choisirDeplacement() {
+
+
+    //public void deplacerVersHeros() {
+    //    String choix = choisirDeplacement();
+    //    this.deplacer(choix);
+    //}
+
+    /*public String choisirDeplacement() {
         int[] calcul = calculerDistance();
 
         if(calcul[0] == 0) {
@@ -57,7 +61,10 @@ public class Monstre extends Personnage {
         }
     }
 
+    /*
     public int[] calculerDistance() {
+
+        // position du personnage et du monstre
         int Px = this.laby.pj.getX();
         int Py = this.laby.pj.getY();
 
@@ -74,3 +81,4 @@ public class Monstre extends Personnage {
         }
     }
 }
+     */

@@ -1,6 +1,6 @@
 package gameLaby.laby;
 
-public class Personnage {
+public abstract class Personnage {
     /**
      * position du personnage
      */
@@ -34,22 +34,12 @@ public class Personnage {
     }
 
 
-    public void deplacer(String action) {
-        // case courante
-        int[] courante = {this.x, this.y};
 
-        // calcule case suivante
-        int[] suivante = Labyrinthe.getSuivant(courante[0], courante[1], action);
-
-        // si c'est pas un mur, on effectue le deplacement
-        if (!this.laby.getMur(suivante[0], suivante[1])) {
-            //vérifie la position du monstre
-            if(!(suivante[0] == this.laby.monstre.x && suivante[1] == this.laby.monstre.y)){
-                this.x = suivante[0];
-                this.y = suivante[1];
-            }
-        }
-    }
+    /**deplace le personnage selon l'action
+     *
+     * @param action action a effectuer
+     */
+    public abstract void deplacer(String action);
 
     /**
      * retourne la position du personnage
