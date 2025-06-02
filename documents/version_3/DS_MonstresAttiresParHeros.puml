@@ -6,10 +6,11 @@ autonumber
 Main -> Monstre : deplacerVersHeros()
 activate Monstre
 
+Monstre -> Monstre : choisirDeplacement()
+activate Monstre
+
 
 Monstre -> Monstre : calculerDistance()
-
-
 activate Monstre
 
 Monstre -> Heros : getX()
@@ -22,12 +23,16 @@ activate Heros
 Monstre <-- Heros : int
 deactivate Heros
 
+Monstre <-- Monstre: int[]
+deactivate Monstre
 Monstre <-- Monstre : String action
+
 deactivate Monstre
 
 Monstre -> Monstre: deplacer(action)
 activate Monstre
 Monstre <-- Monstre: void
+
 
 deactivate Monstre
 
