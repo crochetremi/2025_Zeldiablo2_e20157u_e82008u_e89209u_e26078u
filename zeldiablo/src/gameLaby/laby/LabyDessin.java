@@ -31,10 +31,10 @@ public class LabyDessin implements DessinJeu {
         }
 
         gc.setFill(Color.RED);
-        gc.fillOval(lj.perso.getX()*20, lj.perso.getY()*20, 20, 20);
+        gc.fillOval(lj.laby.pj.getX()*20, lj.laby.pj.getY()*20, 20, 20);
 
         gc.setFill(Color.PURPLE);
-        gc.fillOval(lj.monstre.getX()*20, lj.monstre.getY()*20, 20, 20);
+        gc.fillOval(lj.laby.monstre.getX()*20, lj.laby.monstre.getY()*20, 20, 20);
 
     }
 }

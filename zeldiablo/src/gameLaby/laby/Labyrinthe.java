@@ -30,12 +30,12 @@ public class Labyrinthe {
     /**
      * attribut du personnage
      */
-    public Perso pj;
+    public Personnage pj;
 
     /**
      * attribut du monstre
      */
-    public Monstre monstre;
+    public Personnage monstre;
 
 
     /**
@@ -121,7 +121,7 @@ public class Labyrinthe {
                         // pas de mur
                         this.murs[colonne][numeroLigne] = false;
                         // ajoute PJ
-                        this.pj = new Perso(colonne, numeroLigne);
+                        this.pj = new Heros(colonne, numeroLigne);
                         break;
                     case M :
                         // pas de mur

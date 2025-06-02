@@ -6,8 +6,6 @@ import moteurJeu.Jeu;
 public class LabyJeu implements Jeu {
 
     public Labyrinthe laby;
-    public Perso perso;
-    public Monstre monstre;
 
     public LabyJeu() {
         init();
@@ -16,8 +14,6 @@ public class LabyJeu implements Jeu {
     public LabyJeu(String fichier) {
         try{
             this.laby = new Labyrinthe(fichier);
-            this.perso = laby.pj;
-            this.monstre = laby.monstre;
         }
         catch (Exception e){
             System.out.println("erreur chargement labyrinthe");
@@ -43,8 +39,6 @@ public class LabyJeu implements Jeu {
     public void init() {
         try{
             this.laby = new Labyrinthe("zeldiablo/labySimple/laby1.txt");
-            this.perso = laby.pj;
-            this.monstre = laby.monstre;
         }
         catch (Exception e){
             System.out.println("erreur chargement labyrinthe");

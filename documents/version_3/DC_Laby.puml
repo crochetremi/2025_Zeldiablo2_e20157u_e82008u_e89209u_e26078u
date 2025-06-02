@@ -1,0 +1,114 @@
+@startuml
+!theme plain
+
+package "gameLaby.laby" {
+
+    class Main {
+        +{static} main(String[] args) : void
+    }
+
+    class MainLaby {
+        +{static} main(String[] args) : void
+    }
+
+    class LabyJeu {
+        +laby : Labyrinthe
+        +perso : Personnage
+        +monstre : Personnage
+        +LabyJeu():
+        +LabyJeu(String):
+        +update(double secondes, Clavier clavier) : void
+        +init() : void
+        +etreFini() : boolean
+    }
+
+    class LabyDessin {
+        +dessinerJeu(Jeu jeu, Canvas canvas) : void
+    }
+
+    class Labyrinthe {
+        +{static} MUR : char = 'X'
+        +{static} PJ : char = 'P'
+        +{static} M : char = 'M'
+        +{static} VIDE : char = '.'
+        +{static} HAUT : String = "Haut"
+        +{static} BAS : String = "Bas"
+        +{static} GAUCHE : String = "Gauche"
+        +{static} DROITE : String = "Droite"
+        +pj : Personnage
+        +monstre : Personnage
+        +murs : boolean[][]
+        +Labyrinthe(String nom)
+        +{static} getSuivant(int x, int y, String action) : int[]
+        +deplacerPerso(String action) : void
+        +deplacerMonstre() : void
+        +etreFini() : boolean
+        +getLengthY() : int
+        +getLength() : int
+        +getMur(int x, int y) : boolean
+    }
+
+        class Personnage {
+            <<abstract>>
+            #x: int
+            #y: int
+            +Personnage(int dx, int dy)
+            +getX() int
+            +getY() int
+            +etrePresent(int dx, int dy) boolean
+        }
+
+
+    class Heros {
+        +Heros(int dx, int dy)
+    }
+
+    class Monstre {
+        +Monstre(int dx, int dy)
+    }
+
+}
+
+package "moteurJeu" {
+    interface Jeu {
+        +update(double secondes, Clavier clavier) : void
+        +etreFini() : boolean
+    }
+
+    interface DessinJeu {
+        +dessinerJeu(Jeu jeu, Canvas canvas) : void
+    }
+
+    class Clavier {
+        +bas : boolean
+        +haut : boolean
+        +gauche : boolean
+        +droite : boolean
+    }
+
+    class MoteurJeu {
+        +{static} setTaille(int width, int height) : void
+        +{static} setFPS(int fps) : void
+        +{static} launch(Jeu jeu, DessinJeu dessin) : void
+    }
+}
+
+' Relations
+LabyJeu ..|> Jeu : implements
+LabyDessin ..|> DessinJeu : implements
+
+LabyJeu --> Labyrinthe : contains
+Personnage <|-- Heros
+Personnage <|-- Monstre
+Labyrinthe --> Personnage
+
+
+Main ..> Labyrinthe : uses
+MainLaby ..> LabyJeu : creates
+MainLaby ..> LabyDessin : creates
+MainLaby ..> MoteurJeu : uses
+
+LabyJeu ..> Clavier : uses
+LabyDessin ..> LabyJeu : uses
+
+@enduml
