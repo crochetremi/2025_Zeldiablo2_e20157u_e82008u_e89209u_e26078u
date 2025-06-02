@@ -23,5 +23,11 @@ deactivate Perso
 Monstre <-- Monstre : int[]
 deactivate Monstre
 
+note right
+Ensuite, avec ce tableau de int,
+on change la position du monstre
+end note
+
+Main <-- Monstre : void
 
 @enduml
