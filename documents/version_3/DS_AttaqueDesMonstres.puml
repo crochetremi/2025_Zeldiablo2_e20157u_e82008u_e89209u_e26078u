@@ -8,31 +8,40 @@ participant "Monstre" as monstre
 participant "Heros" as heros
 participant "Labyrinthe" as laby
 
-main -> monstre: deplacer()
+activate main
+main -> monstre : deplacer(String)
 activate monstre
 
-monstre -> monstre: verifierProximiteHeros()
-activate monstre #DarkSalmon
+monstre -> heros : attaquer()
+activate heros
+heros --> monstre : aTape boolean
+deactivate heros
 
-alt heroAPortee == true
-    monstre -> heros: attaquer(degats)
-    activate heros
-    heros -> heros: subirDegats(degats)
-    heros --> monstre: confirmation
-    deactivate heros
+alt aTape == false
+    monstre -> monstre : deplacementAleatoire()
+    monstre <-- monstre : actionAleatoire : String
 
-else heroAPortee == false
-    monstre -> laby: getMur(suivant_x, suivant_y)
+    monstre -> laby : getSuivant(x, y, action)
     activate laby
-    laby --> monstre: mur_present
+    laby --> monstre : suivant[]
     deactivate laby
 
-    alt mur_present == false
-        monstre -> monstre: deplacementAleatoire()
+    monstre -> laby : getMur(suivant[0], suivant[1])
+    activate laby
+    laby --> monstre : estMur : boolean
+    deactivate laby
+
+    monstre -> heros : etrePresent(suivant[0],suivant[1])
+    heros --> monstre : estPresent : boolean
+
+    alt !estMur && !estPresent
+        monstre -> monstre : monstre.x = suivant[0]
+        monstre -> monstre : monstre.y = suivant[1]
     end
 end
 
+monstre --> main : void
 deactivate monstre
-deactivate monstre
+deactivate main
 
 @enduml
