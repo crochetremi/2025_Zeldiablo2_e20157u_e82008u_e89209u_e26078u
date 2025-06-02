@@ -4,29 +4,32 @@
 autonumber
 
 Main -> Monstre : deplacerVersHeros()
+activate Monstre
+
 
 Monstre -> Monstre : calculerDistance()
 
 
 activate Monstre
 
-Monstre -> Perso : getX()
-activate Perso
-Monstre <-- Perso : int
-deactivate Perso
+Monstre -> Heros : getX()
+activate Heros
+Monstre <-- Heros : int
+deactivate Heros
 
-Monstre -> Perso : getY()
-activate Perso
-Monstre <-- Perso : int
-deactivate Perso
+Monstre -> Heros : getY()
+activate Heros
+Monstre <-- Heros : int
+deactivate Heros
 
-Monstre <-- Monstre : int[]
+Monstre <-- Monstre : String action
 deactivate Monstre
 
-note right
-Ensuite, avec ce tableau de int,
-on change la position du monstre
-end note
+Monstre -> Monstre: deplacer(action)
+activate Monstre
+Monstre <-- Monstre: void
+
+deactivate Monstre
 
 Main <-- Monstre : void
 
