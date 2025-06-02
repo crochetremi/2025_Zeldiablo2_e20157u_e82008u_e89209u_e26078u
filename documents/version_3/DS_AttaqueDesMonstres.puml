@@ -3,14 +3,36 @@
 
 autonumber
 
-Main -> Monstre: deplacerMonstre()
-alt heroProximite = true
-Monstre -> Monstre : attaquerMonstre(cible, degat)
+participant "Main" as main
+participant "Monstre" as monstre
+participant "Heros" as heros
+participant "Labyrinthe" as laby
 
-else attaque = true
+main -> monstre: deplacer()
+activate monstre
 
+monstre -> monstre: verifierProximiteHeros()
+activate monstre #DarkSalmon
+
+alt heroAPortee == true
+    monstre -> heros: attaquer(degats)
+    activate heros
+    heros -> heros: subirDegats(degats)
+    heros --> monstre: confirmation
+    deactivate heros
+
+else heroAPortee == false
+    monstre -> laby: getMur(suivant_x, suivant_y)
+    activate laby
+    laby --> monstre: mur_present
+    deactivate laby
+
+    alt mur_present == false
+        monstre -> monstre: deplacementAleatoire()
+    end
 end
 
-
+deactivate monstre
+deactivate monstre
 
 @enduml
