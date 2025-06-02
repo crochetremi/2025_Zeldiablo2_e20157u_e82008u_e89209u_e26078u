@@ -23,16 +23,16 @@ public class LabyJeu implements Jeu {
     @Override
     public void update(double secondes, Clavier clavier) {
         if(clavier.bas){
-            laby.deplacerPerso(Labyrinthe.BAS);
+            laby.pj.deplacer(Labyrinthe.BAS);
         }
         if(clavier.haut){
-            laby.deplacerPerso(Labyrinthe.HAUT);
+            laby.pj.deplacer(Labyrinthe.HAUT);
         }
         if(clavier.gauche){
-            laby.deplacerPerso(Labyrinthe.GAUCHE);
+            laby.pj.deplacer(Labyrinthe.GAUCHE);
         }
         if(clavier.droite){
-            laby.deplacerPerso(Labyrinthe.DROITE);
+            laby.pj.deplacer(Labyrinthe.DROITE);
         }
     }
 

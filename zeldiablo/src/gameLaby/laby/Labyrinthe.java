@@ -142,52 +142,10 @@ public class Labyrinthe {
 
         // ferme fichier
         bfRead.close();
-    }
 
+        if (this.pj != null) this.pj.setLaby(this);
+        if (this.monstre != null) this.monstre.setLaby(this);
 
-    /**
-     * deplace le personnage en fonction de l'action.
-     * gere la collision avec les murs
-     *
-     * @param action une des actions possibles
-     */
-    public void deplacerPerso(String action) {
-        // case courante
-        int[] courante = {this.pj.x, this.pj.y};
-
-        // calcule case suivante
-        int[] suivante = getSuivant(courante[0], courante[1], action);
-
-        // si c'est pas un mur, on effectue le deplacement
-        if (!this.murs[suivante[0]][suivante[1]]) {
-            //vérifie la position du monstre
-            if(!(suivante[0] == monstre.x && suivante[1] == monstre.y)){
-                // on met a jour personnage
-                this.pj.x = suivante[0];
-                this.pj.y = suivante[1];
-            }
-        }
-        int probabilite = (int) (Math.random() * 100);
-        if(probabilite < 10){
-            // deplace le monstre
-            deplacerMonstre();
-        }
-    }
-
-    public void deplacerMonstre() {
-        String[] actions = {HAUT, BAS, GAUCHE, DROITE};
-
-        // case courante
-        int[] courante = {this.monstre.x, this.monstre.y};
-        // on choisit une action au hasard
-        String action = actions[(int) (Math.random() * actions.length)];
-        // calcule case suivante
-        int[] suivante = getSuivant(courante[0], courante[1], action);
-        if(!this.murs[suivante[0]][suivante[1]] && !(suivante[0] == pj.x && suivante[1] == pj.y)){
-            // on met a jour monstre
-            this.monstre.x = suivante[0];
-            this.monstre.y = suivante[1];
-        }
     }
 
 

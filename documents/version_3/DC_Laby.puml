@@ -40,8 +40,6 @@ package "gameLaby.laby" {
         +murs : boolean[][]
         +Labyrinthe(String nom)
         +{static} getSuivant(int x, int y, String action) : int[]
-        +deplacerPerso(String action) : void
-        +deplacerMonstre() : void
         +etreFini() : boolean
         +getLengthY() : int
         +getLength() : int
@@ -50,9 +48,11 @@ package "gameLaby.laby" {
 
         class Personnage {
             <<abstract>>
-            #x: int
-            #y: int
+            x: int
+            y: int
             +Personnage(int dx, int dy)
+            +setLaby(Labyrinthe): void
+            +<<abstract>> deplacer(String action) : void
             +getX() int
             +getY() int
             +etrePresent(int dx, int dy) boolean
@@ -61,10 +61,12 @@ package "gameLaby.laby" {
 
     class Heros {
         +Heros(int dx, int dy)
+        +deplacer(String action) : void
     }
 
     class Monstre {
         +Monstre(int dx, int dy)
+        +deplacer(String action) : void
     }
 
 }

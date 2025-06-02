@@ -4,7 +4,12 @@ public abstract class Personnage {
     /**
      * position du personnage
      */
-    protected int x, y;
+    int x, y;
+
+    /**
+     * labyrinthe dans lequel se trouve le personnage
+     */
+    Labyrinthe laby;
 
     /**
      * constructeur
@@ -17,6 +22,10 @@ public abstract class Personnage {
         this.y = dy;
     }
 
+    public void setLaby(Labyrinthe laby) {
+        this.laby = laby;
+    }
+
     /**
      * permet de savoir si le personnage est en x,y
      */
@@ -24,6 +33,17 @@ public abstract class Personnage {
         return (this.x == dx && this.y == dy);
     }
 
+    /**deplace le personnage selon l'action
+     *
+     * @param action action a effectuer
+     */
+    public abstract void deplacer(String action);
+
+    /**
+     * retourne la position du personnage
+     *
+     * @return tableau de deux entiers, x et y
+     */
     public int getX() {
         return this.x;
     }
