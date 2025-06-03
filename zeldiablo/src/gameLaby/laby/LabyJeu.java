@@ -61,7 +61,6 @@ public class LabyJeu implements Jeu {
 
     public boolean etreFini() {
         boolean heroVivant = this.laby.pj.etreVivant();
-        boolean conditionremplie = this.laby.pj.remplirConditionVictoire();
 
         if (!heroVivant) {
             System.out.println("Fin du jeu, le héros est mort !");

@@ -63,6 +63,20 @@ public class LabyDessin implements DessinJeu {
 
 
         if(lj.laby.pj.remplirConditionVictoire()){
+
+            this.victoire(canvas);
+
+    }}
+
+    public void victoire(Canvas canvas){
+
+        //Crée le canva
+        final GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        // dessin fond
+        gc.setFill(Color.LIGHTGRAY);
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
             // Créer une nouvelle fenêtre pour afficher le message de victoire
             Stage victoryStage = new Stage();
             victoryStage.setTitle("Félicitations!");
@@ -94,7 +108,6 @@ public class LabyDessin implements DessinJeu {
             // Afficher la fenêtre de victoire
             victoryStage.show();
         }
-
     }
 
-}
+

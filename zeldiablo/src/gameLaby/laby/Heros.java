@@ -45,7 +45,7 @@ public class Heros extends Personnage {
     public void recupererAmulette(){
 
         if(this.etreVivant()){
-            if(this.laby.pj.etrePresent(this.laby.amu.x, this.laby.amu.y)){
+            if(this.laby.pj.etrePresent(this.laby.amu.getX(), this.laby.amu.getY())){
                 this.possedeeAmulette = true;
             }
         }
