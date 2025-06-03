@@ -17,9 +17,11 @@ public class Heros extends Personnage {
         // si c'est pas un mur, on effectue le deplacement
         if (!this.laby.getMur(suivante[0], suivante[1])) {
             //vérifie la position du monstre
-            if(!(suivante[0] == this.laby.monstre.x && suivante[1] == this.laby.monstre.y)){
-                this.x = suivante[0];
-                this.y = suivante[1];
+            for(int i = 0; i< this.laby.monstres.monstres.size(); i++) {
+                if(!(suivante[0] == this.laby.monstres.monstres.get(i).x && suivante[1] == this.laby.monstres.monstres.get(i).y)){
+                    this.x = suivante[0];
+                    this.y = suivante[1];
+                }
             }
         }
     }

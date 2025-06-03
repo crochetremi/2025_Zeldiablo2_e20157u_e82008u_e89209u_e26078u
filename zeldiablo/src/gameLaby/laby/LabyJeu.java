@@ -23,12 +23,11 @@ public class LabyJeu implements Jeu {
 
     @Override
     public void update(double secondes, Clavier clavier) {
-
         int prob = (int) (Math.random() * 100);
         if(prob < 75) {
-            laby.monstre.deplacerVersHeros();
+            laby.monstres.deplacerMontresVersHeros();
         } else if(prob < 90) {
-            laby.monstre.deplacerAleatoire();
+            laby.monstres.deplacerMontresAleatoire();
         }
 
         if(clavier.bas){

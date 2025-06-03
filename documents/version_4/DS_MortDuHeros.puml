@@ -1,6 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-
+title Fin du jeu par mort du héros
 autonumber
 
 Main -> LabyJeu : update()
@@ -20,6 +20,5 @@ deactivate LabyJeu
 Main <-- LabyJeu : fin du jeu
 
 deactivate LabyJeu
-
 
 @enduml

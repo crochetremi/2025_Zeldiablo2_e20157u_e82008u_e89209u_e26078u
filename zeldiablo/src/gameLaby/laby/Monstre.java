@@ -45,7 +45,7 @@ public class Monstre extends Personnage {
     @Override
     public void deplacer(String action) {
 
-        if (attaquer(1)){
+        if (attaquer(1)) {
             return;
         }
 

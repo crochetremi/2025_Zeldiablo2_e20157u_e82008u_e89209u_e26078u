@@ -38,7 +38,7 @@ public class Labyrinthe {
     /**
      * attribut du monstre
      */
-    public Monstre monstre;
+    public Bestiaire monstres = new Bestiaire();
 
     /**
      * Attribut de l'amulette
@@ -112,6 +112,7 @@ public class Labyrinthe {
         // stocke les indices courants
         int numeroLigne = 0;
 
+
         // parcours le fichier
         while (ligne != null) {
 
@@ -135,7 +136,7 @@ public class Labyrinthe {
                         // pas de mur
                         this.murs[colonne][numeroLigne] = false;
                         // ajoute PJ
-                        this.monstre = new Monstre(colonne, numeroLigne);
+                        monstres.ajouterMonstre(new Monstre(colonne, numeroLigne));
                         break;
                     case A:
                         // pas de mur
@@ -159,7 +160,10 @@ public class Labyrinthe {
         bfRead.close();
 
         if (this.pj != null) this.pj.setLaby(this);
-        if (this.monstre != null) this.monstre.setLaby(this);
+        for(int i = 0; i < this.monstres.monstres.size(); i ++) {
+            if (this.monstres.monstres.get(i) != null) this.monstres.monstres.get(i).setLaby(this);
+        }
+
 
     }
 
