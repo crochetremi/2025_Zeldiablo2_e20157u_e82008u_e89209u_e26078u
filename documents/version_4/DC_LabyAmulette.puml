@@ -42,8 +42,6 @@ package "gameLaby.laby" {
         +{static} GAUCHE : String = "Gauche"
         +{static} DROITE : String = "Droite"
         '/
-        +pj : Personnage
-        +monstre : Personnage
         +murs : boolean[][]
         +Labyrinthe(String nom)
         +{static} getSuivant(int x, int y, String action) : int[]
@@ -53,13 +51,12 @@ package "gameLaby.laby" {
         +getMur(int x, int y) : boolean
     }
 
-        class Personnage {
-            <<abstract>>
+        abstract class Personnage {
             x: int
             y: int
             +Personnage(int dx, int dy)
             +setLaby(Labyrinthe): void
-            +<<abstract>> deplacer(String action) : void
+            +{abstract} deplacer(String action) : void
             +getX() int
             +getY() int
             +etrePresent(int dx, int dy) boolean
@@ -67,6 +64,7 @@ package "gameLaby.laby" {
 
 
     class Heros {
+        + amulettePossedee : boolean
         +Heros(int dx, int dy)
         +deplacer(String action) : void
     }
@@ -79,7 +77,7 @@ package "gameLaby.laby" {
     class Objet{
         x: int
         y: int
-        +Personnage(int dx, int dy)
+        +Objet(int dx, int dy)
         +setLaby(Labyrinthe): void
         +getX() int
         +getY() int
@@ -147,7 +145,7 @@ Heros --|> Personnage
 Monstre --|> Personnage
 Amulette --|> Objet
 
-Heros --> Amulette
+
 
 remove moteurJeu
 
