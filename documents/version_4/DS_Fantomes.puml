@@ -3,15 +3,15 @@
 autonumber
 
 actor Joueur
-participant LabyJeu
-participant Fantome
-participant Labyrinthe
-participant Heros
+participant "LabyJeu" as LabyJeu
+participant "Fantôme" as Fantome
+participant "Labyrinthe" as Labyrinthe
+participant "Héros" as Heros
 
-Joueur -> LabyJeu : update() via Clavier
+Joueur -> LabyJeu : update()
 activate LabyJeu
 
-LabyJeu -> Heros : deplacer(direction)
+LabyJeu -> Heros : déplacer(direction)
 activate Heros
 
 Heros -> Labyrinthe : getSuivant(x,y,direction)
@@ -19,37 +19,32 @@ activate Labyrinthe
 Labyrinthe --> Heros : [nx,ny]
 deactivate Labyrinthe
 
-Heros -> Fantome : etrePresent(nx,ny)
+Heros -> Fantome : estPrésent(nx,ny)
+activate Fantome
+Fantome --> Heros : false (traverse pas héros)
+deactivate Fantome
+
+Heros -> Heros : mettreÀJourPosition(nx,ny)
+
+deactivate Heros
+
+LabyJeu -> Fantome : déplacer()
 activate Fantome
 
-alt Collision avec Fantôme
-    Fantome --> Heros : true
-    Heros --> LabyJeu : annulerDéplacement()
-else Pas de collision
-    Fantome --> Heros : false
-    Heros -> Heros : x=nx, y=ny
-end
-
-LabyJeu -> Fantome : deplacer()
-activate Fantome
-
-Fantome -> Labyrinthe : getSuivant(x,y,directionAléa)
+Fantome -> Fantome : choisirDirectionAléatoire()
+Fantome -> Labyrinthe : getSuivant(x,y,direction)
 activate Labyrinthe
-
-alt Case = Mur
-    Labyrinthe --> Fantome : [mx,my] (traverse)
-    Labyrinthe --> Fantome : bloqué
-end
-
+Labyrinthe --> Fantome : [mx,my] (peut être mur)
 deactivate Labyrinthe
 
-alt Peut traverser
-    Fantome -> Fantome : x=mx, y=my
-else Bloqué par entité
-    Fantome --> LabyJeu : reste sur place
-end
+Fantome -> LabyJeu : estEntitéPrésente(mx,my)
+activate LabyJeu
+LabyJeu --> Fantome : false (case libre)
+deactivate LabyJeu
+
+    Fantome -> Fantome : x = mx, y = my
+    Fantome -> Fantome : annulerDéplacement()
 
 deactivate Fantome
-deactivate Heros
 deactivate LabyJeu
 @enduml
