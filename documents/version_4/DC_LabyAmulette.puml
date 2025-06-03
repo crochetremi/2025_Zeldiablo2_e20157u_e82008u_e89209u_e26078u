@@ -6,17 +6,17 @@ package "gameLaby.laby" {
     /'interface Jeu {
             +update(double secondes, Clavier clavier) : void
             +etreFini() : boolean
-    }
+    }'/
 
-    class Main {
+    /'class Main {
         +{static} main(String[] args) : void
-    }
+    }'/
 
-    class MainLaby {
+    /'class MainLaby {
         +{static} main(String[] args) : void
-    }
+    }'/
 
-    class LabyJeu {
+    /'class LabyJeu {
         '+laby : Labyrinthe
         +perso : Personnage
         +monstre : Personnage
@@ -25,9 +25,9 @@ package "gameLaby.laby" {
         +update(double secondes, Clavier clavier) : void
         +init() : void
         +etreFini() : boolean
-    }
+    }'/
 
-    class LabyDessin {
+    /'class LabyDessin {
         +dessinerJeu(Jeu jeu, Canvas canvas) : void
     }'/
 
@@ -42,6 +42,8 @@ package "gameLaby.laby" {
         +{static} GAUCHE : String = "Gauche"
         +{static} DROITE : String = "Droite"
         '/
+        +pj : Personnage
+        +monstre : Personnage
         +murs : boolean[][]
         +Labyrinthe(String nom)
         +{static} getSuivant(int x, int y, String action) : int[]
@@ -72,11 +74,20 @@ package "gameLaby.laby" {
     class Monstre {
         +Monstre(int dx, int dy)
         +deplacer(String action) : void
-        +deplacementAleatoire() : String
-        +deplacerAleatoire() : void
-        +deplacerVersHeros():void
-        +choisirDeplacement(): string
-        +calculerDistance(): int[]
+    }
+
+    class Objet{
+        x: int
+        y: int
+        +Personnage(int dx, int dy)
+        +setLaby(Labyrinthe): void
+        +getX() int
+        +getY() int
+        +etrePresent(int dx, int dy) boolean
+    }
+
+    class Amulette{
+        Amulette(int,int)
     }
 
 }
@@ -109,8 +120,8 @@ package "moteurJeu" {
 /'Jeu <|.. LabyJeu
 DessinJeu <|.. LabyDessin
 
-Labyrinthe "1" --> "1" Monstre : monstre
-Labyrinthe "1" --> "1" Heros : pj
+Labyrinthe --> Monstre
+Labyrinthe --> Heros
 
 
 LabyJeu --> Labyrinthe : contains
@@ -125,13 +136,18 @@ MainLaby ..> LabyDessin : creates
 MainLaby ..> MoteurJeu : uses
 
 LabyJeu ..> Clavier : uses
-LabyDessin ..> LabyJeu : uses'/
+LabyDessin ..> LabyJeu : uses
+'/
 
 Labyrinthe "1" --> "1" Monstre : monstre
 Labyrinthe "1" --> "1" Heros : pj
+Labyrinthe "1" --> "1" Amulette : amu
 
 Heros --|> Personnage
 Monstre --|> Personnage
+Amulette --|> Objet
+
 
 remove moteurJeu
+
 @enduml

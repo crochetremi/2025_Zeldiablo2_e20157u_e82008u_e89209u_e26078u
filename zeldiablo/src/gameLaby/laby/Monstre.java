@@ -44,7 +44,7 @@ public class Monstre extends Personnage {
             return;
         }
 
-        boolean b = this.attaquer(5);
+      
 
 
         // case courante

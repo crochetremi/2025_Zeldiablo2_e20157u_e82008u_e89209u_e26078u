@@ -19,4 +19,4 @@ le Héros perd 1 point de vie.
     • Lorsque le monstre est loin du joueur, il n'attaque pas mais se déplace.
 
 // diagramme de séquence fait par tout le groupe
-// code fait par Erdal et Luca
+// code fait par Erdal
