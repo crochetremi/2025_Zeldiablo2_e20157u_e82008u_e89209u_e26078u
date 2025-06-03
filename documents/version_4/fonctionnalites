@@ -1,0 +1,22 @@
+1. Fin du jeu : mort du héros
+- Descriptif : Lorsque le héros n'a plus de points de vie, le jeu s'arrête et la partie est perdue.
+-Critères de validation :
+    • Le héros par défaut dispose de 5 points de vie.
+    • Chaque monstre fait 1 point de dégât lorsque le héros se fait attaquer.
+    • Quand le héros meurt, un message de finn est affiché sur la console et le jeu s'arrête.
+
+2. Mise en place de l'amulette
+- Descriptif :
+Au lancement du jeu, une amulette est placée sur une case vide du labyrinthe. Le placement de l'amulette est toujours le même et dépend du niveau.
+-Critères de validation
+   • L'amulette ne peut être placée que sur une case vide.
+   • Les monstres et le héros peuvent se situer sur la case de l'amulette.
+   • L'amulette est achée dans le jeu sous la forme d'un cercle jaune sur la case vide où elle se trouve
+
+3. Fantôme
+- Descriptif :
+Le labyrinthe dispose d'un nouveau type de monstre : les fantômes.
+- Critères de validation :
+    • Les fantômes peuvent traverser des murs mais pas les autres personnages (lesautres monstres ou le héros)
+    • Les autres monstres continuent à être bloqués par des murs.
+    • Les attaques des fantômes fonctionnent de la même manière que les attaques des monstres de base
