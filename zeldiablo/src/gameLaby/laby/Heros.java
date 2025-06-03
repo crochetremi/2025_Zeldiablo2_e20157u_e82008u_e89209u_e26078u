@@ -31,4 +31,8 @@ public class Heros extends Personnage {
         return this.vie -= degats;
     }
 
+    public boolean etreVivant() {
+        return this.vie > 0;
+    }
+
 }

@@ -1,5 +1,6 @@
 package gameLaby.laby;
 
+import javafx.application.Platform;
 import moteurJeu.Clavier;
 import moteurJeu.Jeu;
 
@@ -46,6 +47,8 @@ public class LabyJeu implements Jeu {
             laby.pj.deplacer(Labyrinthe.DROITE);
 
         }
+
+        this.etreFini();
     }
 
     public void init() {
@@ -58,6 +61,13 @@ public class LabyJeu implements Jeu {
     }
 
     public boolean etreFini() {
-        return false;
+        boolean heroVivant = this.laby.pj.etreVivant();
+
+        if (!heroVivant) {
+            System.out.println("Fin du jeu, le héros est mort !");
+            Platform.exit();
+        }
+
+        return !heroVivant;
     }
 }
