@@ -1,5 +1,6 @@
 package gameLaby.laby;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class Bestiaire {
@@ -26,4 +27,11 @@ public class Bestiaire {
         }
     }
 
+=======
+/**
+ * Classe représentant les monstres.
+ */
+public class Bestiaire {
+
+>>>>>>> 15a8f08 (maj diagramme de classe Bestiaire)
 }
