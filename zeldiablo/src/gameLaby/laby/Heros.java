@@ -1,6 +1,7 @@
 package gameLaby.laby;
 
 public class Heros extends Personnage {
+
     public Heros(int dx, int dy) {
         super(dx, dy);
     }
@@ -24,6 +25,10 @@ public class Heros extends Personnage {
         //Deplacement du monstre
         /*Monstre m = (Monstre)this.laby.monstre;
         m.deplacerAleatoire();*/
-
     }
+
+    public int subirDegats(int degats) {
+        return this.vie -= degats;
+    }
+
 }

@@ -5,6 +5,7 @@ public abstract class Personnage {
      * position du personnage
      */
     int x, y;
+    int vie = 5;
 
     /**
      * labyrinthe dans lequel se trouve le personnage

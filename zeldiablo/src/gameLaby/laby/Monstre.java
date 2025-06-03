@@ -18,8 +18,34 @@ public class Monstre extends Personnage {
         }
     }
 
+    public boolean attaquer(int degat) {
+
+        int heroX = this.laby.pj.x;
+        int heroY = this.laby.pj.y;
+
+        int deltaX = Math.abs(this.x - heroX);
+        int deltaY = Math.abs(this.y - heroY);
+
+        boolean heroAPortee = (deltaX <= 1 && deltaY <= 1) && !(deltaX == 0 && deltaY == 0);
+
+        if (heroAPortee) {
+            this.laby.pj.subirDegats(10);
+            return true;
+        }
+
+        return false;
+
+    }
+
     @Override
     public void deplacer(String action) {
+
+        if (attaquer(1)){
+            return;
+        }
+
+        boolean b = this.attaquer(5);
+
 
         // case courante
         int[] courante = {this.x, this.y};
@@ -33,8 +59,6 @@ public class Monstre extends Personnage {
                 this.y = suivante[1];
             }
         }
-
-
 
 
 
