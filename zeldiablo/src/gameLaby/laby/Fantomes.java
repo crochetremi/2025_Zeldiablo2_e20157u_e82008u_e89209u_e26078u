@@ -51,7 +51,7 @@ public class Fantomes extends Monstre {
         int deltaX = Math.abs(this.x - heroX);
         int deltaY = Math.abs(this.y - heroY);
 
-        boolean heroAPortee = (deltaX <= 1 && deltaY <= 1) && !(deltaX == 0 && deltaY == 0);
+        boolean heroAPortee = (deltaX == 1 && deltaY == 0) || (deltaX == 0 && deltaY == 1);
 
         if (heroAPortee) {
             this.laby.pj.subirDegats(degat);
