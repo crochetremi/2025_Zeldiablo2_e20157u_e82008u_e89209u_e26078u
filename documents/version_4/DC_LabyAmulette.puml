@@ -74,6 +74,9 @@ package "gameLaby.laby" {
         +deplacer(String action) : void
     }
 
+    class Fantomes{
+    }
+
     class Objet{
         x: int
         y: int
@@ -141,9 +144,10 @@ Labyrinthe "1" --> "1" Monstre : monstre
 Labyrinthe "1" --> "1" Heros : pj
 Labyrinthe "1" --> "1" Amulette : amu
 
-Heros --|> Personnage
-Monstre --|> Personnage
-Amulette --|> Objet
+Personnage <|-- Heros
+Personnage <|-- Monstre
+Monstre <|-- Fantomes
+Objet <|-- Amulette
 
 
 

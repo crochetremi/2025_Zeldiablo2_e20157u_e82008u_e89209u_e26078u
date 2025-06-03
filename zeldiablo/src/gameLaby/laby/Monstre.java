@@ -1,7 +1,5 @@
 package gameLaby.laby;
 
-import java.sql.SQLOutput;
-
 public class Monstre extends Personnage {
     public Monstre(int dx, int dy) {
         super(dx, dy, 2);
@@ -57,8 +55,7 @@ public class Monstre extends Personnage {
         // calcule case suivante
         int[] suivante = Labyrinthe.getSuivant(courante[0], courante[1], action);
 
-            if(!this.laby.getMur(suivante[0], suivante[1]) &&
-                    !(suivante[0] == this.laby.pj.x && suivante[1] == this.laby.pj.y)){
+            if(!this.laby.getMur(suivante[0], suivante[1]) && !(suivante[0] == this.laby.pj.x && suivante[1] == this.laby.pj.y)){
                 this.x = suivante[0];
                 this.y = suivante[1];
             }
