@@ -25,39 +25,4 @@ public class Fantomes extends Monstre {
             this.y = suivante[1];
         }
     }
-
-    @Override
-    public void deplacerAleatoire() {
-        int probabilite = (int) (Math.random() * 100);
-        if (probabilite < 70) {
-            String action = deplacementAleatoire();
-            this.deplacer(action);
-        }
-    }
-
-    @Override
-    public void deplacerVersHeros() {
-        // Les fantômes se déplacent vers le héros en ignorant les murs
-        String choix = choisirDeplacement();
-        this.deplacer(choix);
-    }
-
-    @Override
-    public boolean attaquer(int degat) {
-        // Même logique d'attaque que les monstres normaux
-        int heroX = this.laby.pj.x;
-        int heroY = this.laby.pj.y;
-
-        int deltaX = Math.abs(this.x - heroX);
-        int deltaY = Math.abs(this.y - heroY);
-
-        boolean heroAPortee = (deltaX == 1 && deltaY == 0) || (deltaX == 0 && deltaY == 1);
-
-        if (heroAPortee) {
-            this.laby.pj.subirDegats(degat);
-            return true;
-        }
-
-        return false;
-    }
 }
