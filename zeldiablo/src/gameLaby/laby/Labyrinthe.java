@@ -20,6 +20,8 @@ public class Labyrinthe {
     public static final char M = 'M';
     public static final char A = 'A';
 
+    public static final char F = 'F';
+
     /**
      * constantes actions possibles
      */
@@ -143,6 +145,12 @@ public class Labyrinthe {
                         this.murs[colonne][numeroLigne] = false;
                         // ajoute PJ
                         this.amu = new Amulette(colonne, numeroLigne);
+                        break;
+                    case F:
+                        // pas de mur
+                        this.murs[colonne][numeroLigne] = false;
+                        // ajoute PJ
+                            this.fantomes = new Fantomes(colonne, numeroLigne);
                         break;
 
                     default:

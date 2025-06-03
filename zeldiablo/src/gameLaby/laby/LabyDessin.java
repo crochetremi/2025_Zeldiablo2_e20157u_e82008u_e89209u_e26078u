@@ -7,9 +7,6 @@ import javafx.scene.shape.ArcType;
 import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
 
-import java.awt.*;
-import java.awt.Color;
-
 public class LabyDessin implements DessinJeu {
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
@@ -42,7 +39,7 @@ public class LabyDessin implements DessinJeu {
         gc.fillOval(lj.laby.monstre.getX()*20, lj.laby.monstre.getY()*20, 20, 20);
 
         gc.setFill(Color.GRAY);
-        gc.fillOval(lj.laby.fantome.getX()*20, lj.laby.fantome.getY()*20, 20, 20);
+        gc.fillOval(lj.laby.fantomes.getX()*20, lj.laby.fantomes.getY()*20, 20, 20);
 
     }
 
