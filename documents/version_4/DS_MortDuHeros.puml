@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Main -> LabyJeu : update()
+activate LabyJeu
+
+LabyJeu -> LabyJeu : etreFini()
+activate LabyJeu
+
+LabyJeu -> Heros : etreVivant()
+activate Heros
+LabyJeu <-- Heros : boolean : false
+deactivate Heros
+
+LabyJeu <-- LabyJeu : boolean : false
+deactivate LabyJeu
+
+Main <-- LabyJeu : fin du jeu
+
+deactivate LabyJeu
+
+
+@enduml
