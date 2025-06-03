@@ -28,3 +28,10 @@ Le labyrinthe dispose d'un nouveau type de monstre : les fantômes.
     • Les attaques des fantômes fonctionnent de la même manière que les attaques des monstres de base
 
 // diagramme fait par Luca
+
+4. Acquisition de l'amulette
+-Descriptif : Dés que le joueur demande à déplacer le héros sur l'amulette, le héros se déplace et prend l'amulette.
+-Critères de validation:
+• L'amulette n'est plus sur le plateau (et n'est plus achée).
+• Le Héros possède l'amulette.
+• Un monstre ne récupère pas l'amulette

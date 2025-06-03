@@ -147,6 +147,7 @@ Heros --|> Personnage
 Monstre --|> Personnage
 Amulette --|> Objet
 
+Heros --> Amulette
 
 remove moteurJeu
 
