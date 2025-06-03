@@ -5,7 +5,7 @@ public abstract class Personnage {
      * position du personnage
      */
     int x, y;
-    int vie = 5;
+    int vie;
 
     /**
      * labyrinthe dans lequel se trouve le personnage
@@ -18,9 +18,10 @@ public abstract class Personnage {
      * @param dx position selon x
      * @param dy position selon y
      */
-    public Personnage(int dx, int dy) {
+    public Personnage(int dx, int dy, int pv) {
         this.x = dx;
         this.y = dy;
+        this.vie = pv;
     }
 
     public void setLaby(Labyrinthe laby) {

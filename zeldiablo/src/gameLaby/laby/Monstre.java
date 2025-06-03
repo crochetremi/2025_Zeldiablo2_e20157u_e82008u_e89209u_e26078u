@@ -4,7 +4,7 @@ import java.sql.SQLOutput;
 
 public class Monstre extends Personnage {
     public Monstre(int dx, int dy) {
-        super(dx, dy);
+        super(dx, dy, 2);
     }
 
     public String deplacementAleatoire(){
