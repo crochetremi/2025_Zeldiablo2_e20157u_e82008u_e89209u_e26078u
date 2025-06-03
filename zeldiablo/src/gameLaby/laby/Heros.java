@@ -22,9 +22,6 @@ public class Heros extends Personnage {
                 this.y = suivante[1];
             }
         }
-        //Deplacement du monstre
-        /*Monstre m = (Monstre)this.laby.monstre;
-        m.deplacerAleatoire();*/
     }
 
     public int subirDegats(int degats) {
