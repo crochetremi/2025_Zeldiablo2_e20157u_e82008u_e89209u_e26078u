@@ -1,0 +1,55 @@
+@startuml
+!theme plain
+autonumber
+
+actor Joueur
+participant LabyJeu
+participant Fantome
+participant Labyrinthe
+participant Heros
+
+Joueur -> LabyJeu : update() via Clavier
+activate LabyJeu
+
+LabyJeu -> Heros : deplacer(direction)
+activate Heros
+
+Heros -> Labyrinthe : getSuivant(x,y,direction)
+activate Labyrinthe
+Labyrinthe --> Heros : [nx,ny]
+deactivate Labyrinthe
+
+Heros -> Fantome : etrePresent(nx,ny)
+activate Fantome
+
+alt Collision avec Fantôme
+    Fantome --> Heros : true
+    Heros --> LabyJeu : annulerDéplacement()
+else Pas de collision
+    Fantome --> Heros : false
+    Heros -> Heros : x=nx, y=ny
+end
+
+LabyJeu -> Fantome : deplacer()
+activate Fantome
+
+Fantome -> Labyrinthe : getSuivant(x,y,directionAléa)
+activate Labyrinthe
+
+alt Case = Mur
+    Labyrinthe --> Fantome : [mx,my] (traverse)
+    Labyrinthe --> Fantome : bloqué
+end
+
+deactivate Labyrinthe
+
+alt Peut traverser
+    Fantome -> Fantome : x=mx, y=my
+else Bloqué par entité
+    Fantome --> LabyJeu : reste sur place
+end
+
+deactivate Fantome
+deactivate Heros
+deactivate LabyJeu
+@enduml
