@@ -17,18 +17,17 @@ activate heros
 heros --> monstre : aTape boolean
 deactivate heros
 
-<<<<<<< HEAD
 alt aTape == false
     monstre -> monstre : deplacementAleatoire()
     monstre <-- monstre : actionAleatoire : String
-=======
+
 alt heroAPortee == true
     monstre -> heros: attaquer(degats)
     activate heros
     heros -> heros: subirDegats(degats)
     heros --> monstre: boolean
     deactivate heros
->>>>>>> 2b12748 (ajout du deuxieme diagramme de classe)
+
 
     monstre -> laby : getSuivant(x, y, action)
     activate laby
