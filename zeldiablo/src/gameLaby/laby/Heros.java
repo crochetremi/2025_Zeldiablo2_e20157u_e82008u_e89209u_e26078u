@@ -25,5 +25,7 @@ public class Heros extends Personnage {
         /*Monstre m = (Monstre)this.laby.monstre;
         m.deplacerAleatoire();*/
 
+        laby.monstre.deplacerVersHeros();
+
     }
 }

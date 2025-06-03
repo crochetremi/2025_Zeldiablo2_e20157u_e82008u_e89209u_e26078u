@@ -48,15 +48,15 @@ public class Monstre extends Personnage {
 
         if(calcul[0] == 0) {
             if(calcul[1] > 0) {
-                return Labyrinthe.HAUT;
+                return Labyrinthe.DROITE;
             } else {
-                return Labyrinthe.BAS;
+                return Labyrinthe.GAUCHE;
             }
         } else {
-            if(calcul[1] == 0) {
-                return Labyrinthe.GAUCHE;
+            if(calcul[1] > 0) {
+                return Labyrinthe.BAS;
             } else {
-                return Labyrinthe.DROITE;
+                return Labyrinthe.HAUT;
             }
         }
     }
@@ -74,10 +74,11 @@ public class Monstre extends Personnage {
         int diffx = Px - Mx;
         int diffy = Py - My;
 
-        if(diffx < diffy) {
-            return new int[]{1, Py};
+
+        if(Math.pow(diffy,2) > Math.pow(diffx,2)) {
+            return new int[]{1, diffy};
         } else {
-            return new int[]{0, Px};
+            return new int[]{0, diffx};
         }
     }
 }
