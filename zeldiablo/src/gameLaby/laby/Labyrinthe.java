@@ -45,10 +45,7 @@ public class Labyrinthe {
      */
     public Amulette amu;
 
-    /**
-     * attribut fantome
-     */
-    public Fantomes fantomes;
+
     /**
      * les murs du labyrinthe
      */
@@ -146,12 +143,7 @@ public class Labyrinthe {
                         // ajoute PJ
                         this.amu = new Amulette(colonne, numeroLigne);
                         break;
-                    case F:
-                        // pas de mur
-                        this.murs[colonne][numeroLigne] = false;
-                        // ajoute PJ
-                            this.fantomes = new Fantomes(colonne, numeroLigne);
-                        break;
+
 
                     default:
                         throw new Error("caractere inconnu " + c);

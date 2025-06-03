@@ -48,7 +48,7 @@ public class LabyJeu implements Jeu {
 
         }
 
-        //this.etreFini();
+        this.etreFini();
     }
 
     public void init() {
