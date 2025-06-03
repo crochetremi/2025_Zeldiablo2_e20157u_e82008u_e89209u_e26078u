@@ -54,4 +54,8 @@ public abstract class Personnage {
     public int getY() {
         return this.y;
     }
+
+    public int getVie() {
+        return this.vie;
+    }
 }

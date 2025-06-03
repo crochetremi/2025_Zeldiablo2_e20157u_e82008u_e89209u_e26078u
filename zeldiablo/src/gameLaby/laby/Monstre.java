@@ -1,5 +1,7 @@
 package gameLaby.laby;
 
+import java.sql.SQLOutput;
+
 public class Monstre extends Personnage {
     public Monstre(int dx, int dy) {
         super(dx, dy);
@@ -26,14 +28,22 @@ public class Monstre extends Personnage {
         int deltaX = Math.abs(this.x - heroX);
         int deltaY = Math.abs(this.y - heroY);
 
-        boolean heroAPortee = (deltaX <= 1 && deltaY <= 1) && !(deltaX == 0 && deltaY == 0);
+        boolean heroAPortee = (deltaX == 1 && deltaY == 0) || (deltaX == 0 && deltaY == 1);
+
 
         if (heroAPortee) {
-            this.laby.pj.subirDegats(10);
+            if (this.laby.pj.vie >= 1) {
+                this.laby.pj.subirDegats(1);
+            } else {
+                this.laby.pj.vie = 0;
+            }
+            System.out.println("Vie du héros après attaque : " + this.laby.pj.vie);
             return true;
         }
-
         return false;
+
+
+
 
     }
 
@@ -43,9 +53,6 @@ public class Monstre extends Personnage {
         if (attaquer(1)){
             return;
         }
-
-      
-
 
         // case courante
         int[] courante = {this.x, this.y};
@@ -58,6 +65,8 @@ public class Monstre extends Personnage {
                 this.x = suivante[0];
                 this.y = suivante[1];
             }
+
+
         }
 
 
