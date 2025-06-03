@@ -43,7 +43,10 @@ public class Labyrinthe {
      */
     public Amulette amu;
 
-
+    /**
+     * attribut fantome
+     */
+    public Fantomes fantomes;
     /**
      * les murs du labyrinthe
      */
