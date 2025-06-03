@@ -55,7 +55,7 @@ public class Monstre extends Personnage {
         // calcule case suivante
         int[] suivante = Labyrinthe.getSuivant(courante[0], courante[1], action);
 
-            if(!this.laby.getMur(suivante[0], suivante[1]) && !(suivante[0] == this.laby.pj.x && suivante[1] == this.laby.pj.y)){
+            if(!this.laby.getMur(suivante[0], suivante[1]) && !(suivante[0] == this.laby.pj.x && suivante[1] == this.laby.pj.y) && !this.laby.monstres.occupeParUnMonstre(suivante[0], suivante[1], this)){
                 this.x = suivante[0];
                 this.y = suivante[1];
             }
