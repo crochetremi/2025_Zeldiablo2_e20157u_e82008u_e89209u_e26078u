@@ -32,6 +32,7 @@ Le labyrinthe dispose d'un nouveau type de monstre : les fantômes.
 4. Acquisition de l'amulette
 -Descriptif : Dés que le joueur demande à déplacer le héros sur l'amulette, le héros se déplace et prend l'amulette.
 -Critères de validation:
-• L'amulette n'est plus sur le plateau (et n'est plus achée).
+• L'amulette n'est plus sur le plateau (et n'est plus affichée).
 • Le Héros possède l'amulette.
 • Un monstre ne récupère pas l'amulette
+
