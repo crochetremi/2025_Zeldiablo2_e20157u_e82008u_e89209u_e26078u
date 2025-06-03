@@ -51,7 +51,10 @@
     }
 
     class Bestiaire {
-
+        +Bestiaire()
+        +ajouterMonstre(Monste m)
+        +deplacerMonstreAleatoire()
+        +deplacerMonstreVersHeros()
     }
 
     abstract class Personnage {
@@ -64,6 +67,7 @@
         +getY() int
         +etrePresent(int dx, int dy) boolean
     }
+
 
 
     class Heros {
@@ -142,8 +146,8 @@ LabyJeu ..> Clavier : uses
 LabyDessin ..> LabyJeu : uses
 '/
 
-Labyrinthe "1" --> "1" Bestiaire
-Labyrinthe "1" --> "1" Monstre : monstre
+Labyrinthe "1" --> "*" Bestiaire
+Bestiaire "1" --> "*" Monstre : monstre
 Labyrinthe "1" --> "1" Heros : pj
 Labyrinthe "1" --> "1" Amulette : amu
 
