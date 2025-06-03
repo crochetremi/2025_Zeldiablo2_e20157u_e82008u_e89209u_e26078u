@@ -55,6 +55,7 @@
         +ajouterMonstre(Monste m)
         +deplacerMonstreAleatoire()
         +deplacerMonstreVersHeros()
+        +occupeParUnMonstre(int x, int y, Monstre m) : boolean
     }
 
     abstract class Personnage {
