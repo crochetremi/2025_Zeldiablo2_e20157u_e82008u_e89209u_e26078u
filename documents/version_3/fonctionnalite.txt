@@ -1,11 +1,13 @@
 1. Monstres attirés par le héros
-
 - Descriptif : A chaque fois que les monstres se déplacent, les monstres tentent de réduire leur
 distance à vol d'oiseau par rapport au héros.
 - Critères de validation
     • Après son déplacement, un monstre doit être plus proche du héros qu'avant son
 déplacement (distance de Manhattan sans prise en compte des murs).
     • Les monstres soumis aux obstacles peuvent se retrouver bloqués dans des cul-desac.
+
+// diagramme de séquence fait par tout le groupe
+// code fait par Maël et Rémi
 
 
 2. Attaque des monstres
@@ -15,3 +17,6 @@ déplace pas mais il attaque celui-ci.
     • Lorsque le monstre est à côté du joueur, il attaque et ne se déplace pas. Par défaut,
 le Héros perd 1 point de vie.
     • Lorsque le monstre est loin du joueur, il n'attaque pas mais se déplace.
+
+// diagramme de séquence fait par tout le groupe
+// code fait par Erdal et Luca
