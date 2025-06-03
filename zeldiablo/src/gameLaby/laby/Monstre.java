@@ -42,9 +42,6 @@ public class Monstre extends Personnage {
         }
         return false;
 
-
-
-
     }
 
     @Override
