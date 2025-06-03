@@ -8,7 +8,7 @@ public class MainLaby {
         int pFPS = 10;
 
         // creation des objets
-        LabyJeu labyJeu = new LabyJeu("zeldiablo/labySimple/labybig");
+        LabyJeu labyJeu = new LabyJeu("zeldiablo/labySimple/labyamu");
         LabyDessin labyDessin = new LabyDessin();
 
         // parametrage du moteur de jeu

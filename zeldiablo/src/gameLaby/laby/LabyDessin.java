@@ -29,6 +29,8 @@ public class LabyDessin implements DessinJeu {
                 }
             }
         }
+        gc.setFill(Color.YELLOW);
+        gc.fillOval(lj.laby.amu.getX()*20, lj.laby.amu.getY()*20, 20, 20);
 
         gc.setFill(Color.RED);
         gc.fillOval(lj.laby.pj.getX()*20, lj.laby.pj.getY()*20, 20, 20);
@@ -36,5 +38,8 @@ public class LabyDessin implements DessinJeu {
         gc.setFill(Color.PURPLE);
         gc.fillOval(lj.laby.monstre.getX()*20, lj.laby.monstre.getY()*20, 20, 20);
 
+
+
     }
+
 }

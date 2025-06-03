@@ -18,6 +18,7 @@ public class Labyrinthe {
     public static final char PJ = 'P';
     public static final char VIDE = '.';
     public static final char M = 'M';
+    public static final char A = 'A';
 
     /**
      * constantes actions possibles
@@ -36,6 +37,11 @@ public class Labyrinthe {
      * attribut du monstre
      */
     public Monstre monstre;
+
+    /**
+     * Attribut de l'amulette
+     */
+    public Amulette amu;
 
 
     /**
@@ -128,6 +134,12 @@ public class Labyrinthe {
                         this.murs[colonne][numeroLigne] = false;
                         // ajoute PJ
                         this.monstre = new Monstre(colonne, numeroLigne);
+                        break;
+                    case A:
+                        // pas de mur
+                        this.murs[colonne][numeroLigne] = false;
+                        // ajoute PJ
+                        this.amu = new Amulette(colonne, numeroLigne);
                         break;
 
                     default:
