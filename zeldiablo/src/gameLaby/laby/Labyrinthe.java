@@ -19,9 +19,6 @@ public class Labyrinthe {
     public static final char VIDE = '.';
     public static final char M = 'M';
     public static final char A = 'A';
-
-    public static final char F = 'F';
-
     /**
      * constantes actions possibles
      */
@@ -50,6 +47,8 @@ public class Labyrinthe {
      * les murs du labyrinthe
      */
     public boolean[][] murs;
+
+    public final int[] caseDepart;
 
     /**
      * retourne la case suivante selon une actions
@@ -105,6 +104,7 @@ public class Labyrinthe {
         // creation labyrinthe vide
         this.murs = new boolean[nbColonnes][nbLignes];
         this.pj = null;
+        this.caseDepart = new int[2];
 
         // lecture des cases
         String ligne = bfRead.readLine();
@@ -131,6 +131,8 @@ public class Labyrinthe {
                         this.murs[colonne][numeroLigne] = false;
                         // ajoute PJ
                         this.pj = new Heros(colonne, numeroLigne);
+                        this.caseDepart[0] = colonne;
+                        this.caseDepart[1] = numeroLigne;
                         break;
                     case M :
                         // pas de mur
@@ -209,4 +211,5 @@ public class Labyrinthe {
         // utilise le tableau de boolean
         return this.murs[x][y];
     }
+
 }

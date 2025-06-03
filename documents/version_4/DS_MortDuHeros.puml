@@ -9,12 +9,12 @@ activate LabyJeu
 LabyJeu -> LabyJeu : etreFini()
 activate LabyJeu
 
-LabyJeu -> Heros : etreVivant()
+LabyJeu -> Heros : remplirConditionVictoire()
 activate Heros
-LabyJeu <-- Heros : boolean : false
+LabyJeu <-- Heros : boolean : true
 deactivate Heros
 
-LabyJeu <-- LabyJeu : boolean : false
+LabyJeu <-- LabyJeu : boolean : true
 deactivate LabyJeu
 
 Main <-- LabyJeu : fin du jeu

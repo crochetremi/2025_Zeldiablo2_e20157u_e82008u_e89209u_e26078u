@@ -2,8 +2,11 @@ package gameLaby.laby;
 
 public class Heros extends Personnage {
 
+    public boolean possedeeAmulette;
+
     public Heros(int dx, int dy) {
         super(dx, dy, 5);
+        this.possedeeAmulette = false;
     }
 
     @Override
@@ -28,29 +31,41 @@ public class Heros extends Personnage {
                 this.y = suivante[1];
             }
         }
-        /*
-        if (!this.laby.getMur(suivante[0], suivante[1])) {
-            for (Monstre m : this.laby.monstres.monstres) {
-                if (suivante[0] == m.getX() && suivante[1] == m.getY()) {
-                    cbon = false;
-                    break;
-                }
-            }
-        }
-
-        if (caseLibre) {
-            this.x = suivante[0];
-            this.y = suivante[1];
-        }*/
-
+        recupererAmulette();
     }
 
     public int subirDegats(int degats) {
-        return this.vie -= degats;
+       return this.vie -= degats;
     }
 
     public boolean etreVivant() {
         return this.vie > 0;
+    }
+
+    public void recupererAmulette(){
+
+        if(this.etreVivant()){
+            if(this.laby.pj.etrePresent(this.laby.amu.x, this.laby.amu.y)){
+                this.possedeeAmulette = true;
+            }
+        }
+
+    }
+
+    public boolean remplirConditionVictoire(){
+
+        boolean remplir = false;
+
+        if(this.possedeeAmulette){
+            if(this.laby.pj.etrePresent(this.laby.caseDepart[0], this.laby.caseDepart[1])){
+                remplir = true;
+            }
+        }
+        return remplir;
+    }
+
+    public boolean getAmulette(){
+        return this.possedeeAmulette;
     }
 
 }

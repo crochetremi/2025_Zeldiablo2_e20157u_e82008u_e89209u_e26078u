@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Participant "LabyJeu" as labyjeu
+Participant "Heros" as heros
+Participant "Amulette" as amulette
+
+activate labyjeu
+labyjeu ->  heros : etreFini() :
+
+activate heros
+heros -> amulette : etrePresent(int, int)
+
+activate amulette
+heros <-- amulette : boolean
+deactivate amulette
+heros -> heros : setAmulette()
+
+labyjeu <-- heros : void
+
+deactivate heros
+deactivate labyjeu
+@enduml

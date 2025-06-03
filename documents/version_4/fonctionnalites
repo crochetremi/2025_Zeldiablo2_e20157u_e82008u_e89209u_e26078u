@@ -16,10 +16,10 @@ Au lancement du jeu, une amulette est placée sur une case vide du labyrinthe. L
    • L'amulette ne peut être placée que sur une case vide.
    • Les monstres et le héros peuvent se situer sur la case de l'amulette.
    • L'amulette est affichée dans le jeu sous la forme d'un cercle jaune sur la case vide où elle se trouve
-
+    // diagramme fait par Rémi
    // code fait par Rémi
 
-3. Fantôme
+3. Fantôme -- Mis en pause, le temps d'adapter le jeu pour le faire fonctionner avec plusieurs monstres
 - Descriptif :
 Le labyrinthe dispose d'un nouveau type de monstre : les fantômes.
 - Critères de validation :
@@ -35,4 +35,13 @@ Le labyrinthe dispose d'un nouveau type de monstre : les fantômes.
 • L'amulette n'est plus sur le plateau (et n'est plus affichée).
 • Le Héros possède l'amulette.
 • Un monstre ne récupère pas l'amulette
+//Diagramme et code fait par Rémi
 
+5. Fin du jeu : Victoire du Héros
+-Descriptif : Une fois que le héros a pris l'amulette, il peut retourner à l'entrée du labyrinthe et
+remporter le jeu.
+-Critères de validation:
+• Lorsque le héros possède l'amulette et qu'il retourne à l'entrée du labyrinthe, le
+jeu s'arrête et un message est aché dans la console.
+• Lorsque le héros ne possède pas l'amulette, le jeu ne s'arrête pas même si le héros
+retourne à l'entrée.
