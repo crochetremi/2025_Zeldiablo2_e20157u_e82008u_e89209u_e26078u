@@ -21,9 +21,9 @@ public class Heros extends Personnage {
                 this.y = suivante[1];
             }
         }
-
-        Monstre m = (Monstre)this.laby.monstre;
-        m.deplacerAleatoire();
+        //Deplacement du monstre
+        /*Monstre m = (Monstre)this.laby.monstre;
+        m.deplacerAleatoire();*/
 
     }
 }

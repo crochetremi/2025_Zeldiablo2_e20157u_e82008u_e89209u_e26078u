@@ -34,16 +34,16 @@ public class Monstre extends Personnage {
             }
         }
 
-}
 
 
 
-    //public void deplacerVersHeros() {
-    //    String choix = choisirDeplacement();
-    //    this.deplacer(choix);
-    //}
 
-    /*public String choisirDeplacement() {
+    public void deplacerVersHeros() {
+        String choix = choisirDeplacement();
+        this.deplacer(choix);
+    }
+
+    public String choisirDeplacement() {
         int[] calcul = calculerDistance();
 
         if(calcul[0] == 0) {
@@ -61,7 +61,7 @@ public class Monstre extends Personnage {
         }
     }
 
-    /*
+
     public int[] calculerDistance() {
 
         // position du personnage et du monstre
@@ -81,4 +81,3 @@ public class Monstre extends Personnage {
         }
     }
 }
-     */

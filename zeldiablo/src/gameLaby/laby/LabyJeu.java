@@ -24,15 +24,19 @@ public class LabyJeu implements Jeu {
     public void update(double secondes, Clavier clavier) {
         if(clavier.bas){
             laby.pj.deplacer(Labyrinthe.BAS);
+            laby.monstre.deplacerVersHeros();
         }
         if(clavier.haut){
             laby.pj.deplacer(Labyrinthe.HAUT);
+            laby.monstre.deplacerVersHeros();
         }
         if(clavier.gauche){
             laby.pj.deplacer(Labyrinthe.GAUCHE);
+            laby.monstre.deplacerVersHeros();
         }
         if(clavier.droite){
             laby.pj.deplacer(Labyrinthe.DROITE);
+            laby.monstre.deplacerVersHeros();
         }
     }
 

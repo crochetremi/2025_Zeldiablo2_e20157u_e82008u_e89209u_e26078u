@@ -30,12 +30,12 @@ public class Labyrinthe {
     /**
      * attribut du personnage
      */
-    public Personnage pj;
+    public Heros pj;
 
     /**
      * attribut du monstre
      */
-    public Personnage monstre;
+    public Monstre monstre;
 
 
     /**
