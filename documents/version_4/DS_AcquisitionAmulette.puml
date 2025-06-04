@@ -17,6 +17,10 @@ activate amulette
 heros <-- amulette : boolean
 deactivate amulette
 heros -> heros : setAmulette()
+activate heros
+
+heros <-- heros
+deactivate heros
 
 labyjeu <-- heros : void
 
