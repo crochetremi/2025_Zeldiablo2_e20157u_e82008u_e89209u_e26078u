@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+title Déplacement du personnage à gauche avec une probabilité
+
 autonumber
 
 Main -> Labyrinthe : deplacerPerso("GAUCHE")

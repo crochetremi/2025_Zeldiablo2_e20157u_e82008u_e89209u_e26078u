@@ -1,6 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-
+title Fonctionnalité : Monstre attiré par Héros
 autonumber
 
 Main -> Monstre : deplacerVersHeros()

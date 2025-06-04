@@ -1,5 +1,6 @@
 @startuml
-!theme plain
+
+title Diagramme de classe Laby
 
 package "gameLaby.laby" {
 

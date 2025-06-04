@@ -1,5 +1,6 @@
 @startuml
 
+title Diagramme de classe Laby2
 
 package "gameLaby.laby" {
 
