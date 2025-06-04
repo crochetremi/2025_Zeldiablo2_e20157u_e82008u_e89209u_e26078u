@@ -5,7 +5,7 @@ import moteurJeu.MoteurJeu;
  * Méthode principale qui démarre l'application.
  * Elle initialise les dimensions de la fenêtre, crée les objets nécessaires
  * et lance le moteur de jeu avec les paramètres choisis.
- *
+ *dddd
  */
 
 public class MainLaby {
