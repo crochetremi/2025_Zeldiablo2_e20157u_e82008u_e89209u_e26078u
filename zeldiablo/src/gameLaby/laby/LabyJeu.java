@@ -55,7 +55,7 @@ public class LabyJeu implements Jeu {
 
     public void init() {
         try{
-            this.laby = new Labyrinthe("zeldiablo/labySimple/laby1.txt");
+            this.laby = new Labyrinthe("zeldiablo/labySimple/labybig.txt");
         }
         catch (Exception e){
             System.out.println("erreur chargement labyrinthe");
