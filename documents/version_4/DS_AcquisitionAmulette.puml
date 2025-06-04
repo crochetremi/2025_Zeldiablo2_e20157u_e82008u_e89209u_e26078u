@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+title Acquisition de l'amulette
+
 autonumber
 
 Participant "LabyJeu" as labyjeu

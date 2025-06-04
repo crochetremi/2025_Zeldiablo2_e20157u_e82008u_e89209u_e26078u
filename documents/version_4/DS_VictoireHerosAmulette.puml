@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+title Victoire du heros par Amulette
+
 autonumber
 
 Participant "LabyJeu" as labyjeu

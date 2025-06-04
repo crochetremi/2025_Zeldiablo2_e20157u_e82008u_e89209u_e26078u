@@ -1,6 +1,6 @@
 @startuml
 
-
+title Diagramme de classe final
     /'interface Jeu {
             +update(double secondes, Clavier clavier) : void
             +init() : void

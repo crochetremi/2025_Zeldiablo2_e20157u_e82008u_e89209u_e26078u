@@ -1,5 +1,6 @@
 @startuml
 
+title Ajout de la classe Amulette
 
 package "gameLaby.laby" {
 
