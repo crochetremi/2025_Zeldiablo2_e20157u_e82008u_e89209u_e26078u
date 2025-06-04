@@ -12,7 +12,11 @@ import moteurJeu.Jeu;
 public class LabyJeu implements Jeu {
 
     /** Le labyrinthe du jeu */
-    public Labyrinthe laby;
+    private Labyrinthe laby;
+
+    public Labyrinthe getLaby() {
+        return laby;
+    }
 
     /**
      * Constructeur par défaut qui initialise le jeu avec le labyrinthe par défaut.

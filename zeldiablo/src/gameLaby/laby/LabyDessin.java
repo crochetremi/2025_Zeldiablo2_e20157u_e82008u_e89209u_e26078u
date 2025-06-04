@@ -16,6 +16,8 @@ import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 
+import java.util.ArrayList;
+
 /**
  * Classe responsable du rendu graphique du jeu de labyrinthe.
  * Cette classe implémente l'interface DessinJeu pour gérer l'affichage
@@ -30,19 +32,21 @@ public class LabyDessin implements DessinJeu {
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
 
-        //Crée le jeu
+        // on récupère le jeu
         LabyJeu lj = (LabyJeu) jeu;
 
-        //Crée le canva
         final GraphicsContext gc = canvas.getGraphicsContext2D();
 
         // dessin fond
         gc.setFill(Color.LIGHTGRAY);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        for (int x = 0; x < lj.laby.getLength(); x++) {
-            for(int y = 0; y < lj.laby.getLengthY(); y++){
-                if(lj.laby.getMur(x,y)){
+        Labyrinthe laby = lj.getLaby();
+
+        for (int x = 0; x <
+                laby.getLength(); x++) {
+            for(int y = 0; y < laby.getLengthY(); y++){
+                if(laby.getMur(x,y)){
                     gc.setFill(Color.BLACK);
                     gc.fillRect(x*20, y*20, 20, 20);
                 }
@@ -50,29 +54,38 @@ public class LabyDessin implements DessinJeu {
         }
 
         gc.setFill(Color.BROWN);
-        gc.fillRect(lj.laby.caseDepart[0]*20, lj.laby.caseDepart[1]*20, 20, 20);
+        gc.fillRect(laby.caseDepart[0]*20, laby.caseDepart[1]*20, 20, 20);
 
-        if(lj.laby.pj.getAmulette() == true){
+        int x1 = laby.pj.getX();
+        int y = laby.pj.getY();
+
+        if(laby.pj.getAmulette() == true){
             gc.setFill(Color.RED);
-            gc.fillOval(lj.laby.pj.getX()*20, lj.laby.pj.getY()*20, 20, 20);
+            gc.fillOval(x1 *20, y *20, 20, 20);
             gc.setFill(Color.YELLOW);
-            gc.fillOval(lj.laby.pj.getX()*20, lj.laby.pj.getY()*20, 10, 10);
+            gc.fillOval(x1 *20, y *20, 10, 10);
         }
         else{
             gc.setFill(Color.YELLOW);
-            gc.fillOval(lj.laby.amu.getX()*20, lj.laby.amu.getY()*20, 20, 20);
+            Amulette amu = laby.amu;
+            gc.fillOval(amu.getX()*20, amu.getY()*20, 20, 20);
 
             gc.setFill(Color.RED);
-            gc.fillOval(lj.laby.pj.getX()*20, lj.laby.pj.getY()*20, 20, 20);
+            gc.fillOval(x1 *20, y *20, 20, 20);
         }
 
+        // afficher les monstres
         gc.setFill(Color.PURPLE);
-        for(int x = 0; x < lj.laby.monstres.monstres.size(); x++){
-            gc.fillOval(lj.laby.monstres.monstres.get(x).getX()*20, lj.laby.monstres.monstres.get(x).getY()*20, 20, 20);
+        ArrayList<Monstre> monstres = laby.monstres.monstres;
+        int size = monstres.size();
+
+        for(int i = 0; i < size; i++){
+            Monstre monstrei = monstres.get(i);
+            gc.fillOval(monstrei.getX()*20, monstrei.getY()*20, 20, 20);
         }
 
 
-        if(lj.laby.pj.remplirConditionVictoire()){
+        if(laby.pj.remplirConditionVictoire()){
 
             this.victoire(canvas);
 

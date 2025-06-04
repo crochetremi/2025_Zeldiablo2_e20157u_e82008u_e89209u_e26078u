@@ -159,7 +159,7 @@ public class Monstre extends Personnage {
     }
 
     public String choixDeplacerIntelligent(int x, int y) {
-        String[] directions = {Labyrinthe.HAUT, Labyrinthe.BAS, Labyrinthe.GAUCHE, Labyrinthe.DROITE};
+        String[] directions = {Labyrinthe.GAUCHE, Labyrinthe.DROITE, Labyrinthe.HAUT, Labyrinthe.BAS};
 
         ArrayList<int[]> file = new ArrayList<>();
         boolean[][] visites = new boolean[laby.getLength()][laby.getLengthY()];
