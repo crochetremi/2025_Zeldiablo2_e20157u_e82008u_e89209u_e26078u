@@ -9,7 +9,7 @@
   - le monstre se trouve sur la case indiquée dans le fichier labyrinthe.
   - le monstre est représenté par le caractère 'M' dans le fichier labyrinthe.
   - le monstre ne se trouve pas sur la même case que le personnage.
-
+// Fait par rémi
 
 2. Afficher le monstre
 - Descriptif :
@@ -17,7 +17,7 @@
 - Critères de validation :
   - le monstre doit être affiché à la bonne position dans le labyrinthe.
   - le monstre sera représenté sous la forme d'un cercle violet de la taille du personnage.
-
+// fait par rémi
 
 3. Considérer le monstre dans les déplacements du personnage
 - Descriptif :
@@ -26,7 +26,7 @@
   - le monstre constitue un obstacle pour le personnage.
   - le monstre et le personnage ne peuvent pas se trouver sur la même case.
   - le personnage ne peut pas traverser la case du monstre
-
+// fait par rémi
 
 4. Déplacer le monstre (optionnel en fonction avancée)
 - Descriptif :
@@ -35,7 +35,7 @@
   - le monstre doit se déplacer sur une case adjacente. Il considère les 4 directions de déplacement possibles.
   - le monstre ne peut pas se déplacer sur mur. S'il tente de se déplacer sur cette case, il ne bouge pas.
   - le monstre ne peut pas se trouver sur la même case que le personnage.
-
+// fait par rémi
 
 ////////// Fonctionnalités version 3 \\\\\\\\\\
 
@@ -102,7 +102,12 @@ remporter le jeu.
 jeu s'arrête et un message est aché dans la console.
 • Lorsque le héros ne possède pas l'amulette, le jeu ne s'arrête pas même si le héros
 retourne à l'entrée.
+// code fait par Rémi et Erdal
 
+
+5. Fantômes
+// Diagrammes et code fait par Luca, mais le code n'a pas été gardé, cependant il nous a permis de développer Bestiaire, qui nous permet
+de gérer plusieurs monstres.
 
 ////////// Fonctionnalités version finale \\\\\\\\\\
 
@@ -116,3 +121,5 @@ le héros.
 chemin.
 • lorsqu'il se déplace, le monstre suit effectivement le meilleur chemin et parvient
 jusqu'au héros même s'il y a des obstacles.
+
+// code et diagramme faits par Maël
