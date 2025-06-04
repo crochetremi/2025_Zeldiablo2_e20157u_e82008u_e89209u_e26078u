@@ -5,6 +5,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
+import javafx.scene.text.Font;
 import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
 
@@ -31,83 +32,57 @@ public class LabyDessin implements DessinJeu {
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         for (int x = 0; x < lj.laby.getLength(); x++) {
-            for(int y = 0; y < lj.laby.getLengthY(); y++){
-                if(lj.laby.getMur(x,y)){
+            for (int y = 0; y < lj.laby.getLengthY(); y++) {
+                if (lj.laby.getMur(x, y)) {
                     gc.setFill(Color.BLACK);
-                    gc.fillRect(x*20, y*20, 20, 20);
+                    gc.fillRect(x * 20, y * 20, 20, 20);
                 }
             }
         }
 
         gc.setFill(Color.BROWN);
-        gc.fillRect(lj.laby.caseDepart[0]*20, lj.laby.caseDepart[1]*20, 20, 20);
+        gc.fillRect(lj.laby.caseDepart[0] * 20, lj.laby.caseDepart[1] * 20, 20, 20);
 
-        if(lj.laby.pj.getAmulette() == true){
+        if (lj.laby.pj.getAmulette() == true) {
             gc.setFill(Color.RED);
-            gc.fillOval(lj.laby.pj.getX()*20, lj.laby.pj.getY()*20, 20, 20);
+            gc.fillOval(lj.laby.pj.getX() * 20, lj.laby.pj.getY() * 20, 20, 20);
             gc.setFill(Color.YELLOW);
-            gc.fillOval(lj.laby.pj.getX()*20, lj.laby.pj.getY()*20, 10, 10);
-        }
-        else{
+            gc.fillOval(lj.laby.pj.getX() * 20, lj.laby.pj.getY() * 20, 10, 10);
+        } else {
             gc.setFill(Color.YELLOW);
-            gc.fillOval(lj.laby.amu.getX()*20, lj.laby.amu.getY()*20, 20, 20);
+            gc.fillOval(lj.laby.amu.getX() * 20, lj.laby.amu.getY() * 20, 20, 20);
 
             gc.setFill(Color.RED);
-            gc.fillOval(lj.laby.pj.getX()*20, lj.laby.pj.getY()*20, 20, 20);
+            gc.fillOval(lj.laby.pj.getX() * 20, lj.laby.pj.getY() * 20, 20, 20);
         }
 
         gc.setFill(Color.PURPLE);
-        for(int x = 0; x < lj.laby.monstres.monstres.size(); x++){
-            gc.fillOval(lj.laby.monstres.monstres.get(x).getX()*20, lj.laby.monstres.monstres.get(x).getY()*20, 20, 20);
+        for (int x = 0; x < lj.laby.monstres.monstres.size(); x++) {
+            gc.fillOval(lj.laby.monstres.monstres.get(x).getX() * 20, lj.laby.monstres.monstres.get(x).getY() * 20, 20, 20);
         }
 
+        if(lj.etreFini() && lj.laby.pj.remplirConditionVictoire()){
+            for (int x = 0; x < lj.laby.getLength(); x++) {
+                for (int y = 0; y < lj.laby.getLengthY(); y++) {
+                    if (lj.laby.getMur(x, y)) {
+                        gc.setFill(Color.YELLOW);
+                        gc.fillRect(x * 20, y * 20, 20, 20);
+                    }
+                    else{
+                        gc.setFill(Color.LIGHTYELLOW);
+                        gc.fillRect(x * 20, y * 20, 20, 20);
+                    }
+                }
+            }
+            gc.setFill(Color.RED);
+            Font customFont = new Font("Arial",60);
+            gc.setFont(customFont);
+            gc.fillText("VICTOIRE", 350, 450);
 
-        if(lj.laby.pj.remplirConditionVictoire()){
-
-            this.victoire(canvas);
-
-    }}
-
-    public void victoire(Canvas canvas){
-
-        //Crée le canva
-        final GraphicsContext gc = canvas.getGraphicsContext2D();
-
-        // dessin fond
-        gc.setFill(Color.LIGHTGRAY);
-        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-
-            // Créer une nouvelle fenêtre pour afficher le message de victoire
-            Stage victoryStage = new Stage();
-            victoryStage.setTitle("Félicitations!");
-
-            // Créer le contenu de la fenêtre
-            VBox content = new VBox(10);
-            content.setAlignment(Pos.CENTER);
-            content.setPadding(new Insets(20));
-
-            Label messageLabel = new Label("Vous avez gagné!");
-            messageLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
-
-            Button quitterButton = new Button("Quitter");
-            quitterButton.setOnAction(e -> {
-                victoryStage.close();
-                Platform.exit();
-            });
-
-            content.getChildren().addAll(messageLabel, quitterButton);
-
-            // Configurer et afficher la fenêtre
-            Scene scene = new Scene(content, 300, 150);
-            victoryStage.setScene(scene);
-
-            // Fermer la fenêtre du labyrinthe
-            Stage primaryStage = (Stage) gc.getCanvas().getScene().getWindow();
-            primaryStage.close();
-
-            // Afficher la fenêtre de victoire
-            victoryStage.show();
         }
+
     }
+
+}
 
 

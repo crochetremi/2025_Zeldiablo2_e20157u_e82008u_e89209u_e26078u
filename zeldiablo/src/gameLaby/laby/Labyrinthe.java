@@ -1,5 +1,7 @@
 package gameLaby.laby;
 
+import javafx.application.Platform;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,6 +12,8 @@ import java.io.IOException;
  * <ul> un personnage (x,y) </ul>
  */
 public class Labyrinthe {
+
+    public boolean jeuEnCours = true;
 
     /**
      * Constantes char
@@ -176,7 +180,19 @@ public class Labyrinthe {
      * @return fin du jeu
      */
     public boolean etreFini() {
-        return false;
+        boolean b = false;
+        if( ! (this.pj.etreVivant()) ){
+            b = true;
+            Platform.exit();
+        }
+        if(this.pj.etreVivant() && this.pj.remplirConditionVictoire()){
+            b = true;
+
+        }
+        if(b == true){
+            jeuEnCours = false;
+        }
+        return b;
     }
 
     // ##################################

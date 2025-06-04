@@ -23,28 +23,31 @@ public class LabyJeu implements Jeu {
 
     @Override
     public void update(double secondes, Clavier clavier) {
-        int prob = (int) (Math.random() * 100);
-        if(prob < 75) {
-            laby.monstres.deplacerMontresVersHeros();
-        } else if(prob < 90) {
-            laby.monstres.deplacerMontresAleatoire();
-        }
 
-        if(clavier.bas){
-            laby.pj.deplacer(Labyrinthe.BAS);
+        if(this.laby.jeuEnCours == true){
+            int prob = (int) (Math.random() * 100);
+            if(prob < 75) {
+                laby.monstres.deplacerMontresVersHeros();
+            } else if(prob < 90) {
+                laby.monstres.deplacerMontresAleatoire();
+            }
 
-        }
-        if(clavier.haut){
-            laby.pj.deplacer(Labyrinthe.HAUT);
+            if(clavier.bas){
+                laby.pj.deplacer(Labyrinthe.BAS);
 
-        }
-        if(clavier.gauche){
-            laby.pj.deplacer(Labyrinthe.GAUCHE);
+            }
+            if(clavier.haut){
+                laby.pj.deplacer(Labyrinthe.HAUT);
 
-        }
-        if(clavier.droite){
-            laby.pj.deplacer(Labyrinthe.DROITE);
+            }
+            if(clavier.gauche){
+                laby.pj.deplacer(Labyrinthe.GAUCHE);
 
+            }
+            if(clavier.droite){
+                laby.pj.deplacer(Labyrinthe.DROITE);
+
+            }
         }
 
         this.etreFini();
@@ -60,14 +63,6 @@ public class LabyJeu implements Jeu {
     }
 
     public boolean etreFini() {
-        boolean heroVivant = this.laby.pj.etreVivant();
-
-        if (!heroVivant) {
-            System.out.println("Fin du jeu, le héros est mort !");
-            Platform.exit();
-        }
-
-
-        return !heroVivant;
+        return this.laby.etreFini();
     }
 }
