@@ -13,8 +13,7 @@ public class MainLaby {
         int width = 780;
         int height = 800;
         int pFPS = 10;
-
-        // creation des objets
+      // creation des objets
         LabyJeu labyJeu = new LabyJeu("zeldiablo/labySimple/laby_bloque_monstre");
         LabyDessin labyDessin = new LabyDessin();
 

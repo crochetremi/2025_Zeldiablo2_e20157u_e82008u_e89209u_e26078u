@@ -83,9 +83,10 @@ title Diagramme de classe final
     }
 
     class Bestiaire{
-        +ajouterMonstre(Monstre): void
-        +deplacerMonstreAleatoire() : void
+        +ajouterMonstre(Monstre):
+        +deplacerMonstreAleatoire() :
         +deplacerMonstresVersHeros():
+        +deplacerMonstresIntelligent():
         +occupeParUnMonstre(int,int,Monstre) : boolean
     }
 

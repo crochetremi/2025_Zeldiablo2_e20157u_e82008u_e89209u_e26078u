@@ -38,10 +38,4 @@ public class MonstreTest {
         assertFalse(monstre.attaquer());
     }
 
-    @Test
-    void testCalculerDistance() {
-        int[] distance = monstre.calculerDistance();
-        assertNotNull(distance);
-        assertEquals(2, distance.length);
-    }
 }

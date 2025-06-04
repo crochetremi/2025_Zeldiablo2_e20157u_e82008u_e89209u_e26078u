@@ -32,7 +32,7 @@ public class Bestiaire {
     /**
      * Déplace tous les monstres du bestiaire de manière aléatoire.
     */
-    public void deplacerMontresAleatoire() {
+    public void deplacerMonstresAleatoire() {
         for (int i = 0; i < listeMonstres.size(); i++) {
             this.listeMonstres.get(i).deplacerAleatoire();
         }
@@ -42,7 +42,7 @@ public class Bestiaire {
      * Déplace tous les monstres de la liste de monstres vers le héros.
      * Chaque monstre utilise sa méthode interne pour ajuster sa position en direction du héros.
      */
-    public void deplacerMontresVersHeros() {
+    public void deplacerMonstresVersHeros() {
         for (int i = 0; i < listeMonstres.size(); i++) {
             this.listeMonstres.get(i).deplacerVersHeros();
         }
