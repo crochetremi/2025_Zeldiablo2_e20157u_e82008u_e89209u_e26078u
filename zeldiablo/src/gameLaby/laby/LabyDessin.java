@@ -56,7 +56,7 @@ public class LabyDessin implements DessinJeu {
         int x1 = laby.getPj().getX();
         int y = laby.getPj().getY();
 
-        dessinerAmulette(laby, gc, x1, y);
+        dessinerAmuletteEtPerso(laby, gc, x1, y);
 
         // afficher les monstres
         afficherMonstre(gc, laby);
@@ -117,7 +117,7 @@ public class LabyDessin implements DessinJeu {
         }
     }
 
-    private static void dessinerAmulette(Labyrinthe laby, GraphicsContext gc, int x1, int y) {
+    private static void dessinerAmuletteEtPerso(Labyrinthe laby, GraphicsContext gc, int x1, int y) {
         if(laby.getPj().getAmulette() == true){
             gc.setFill(Color.RED);
             gc.fillOval(x1 *20, y *20, 20, 20);
@@ -132,6 +132,8 @@ public class LabyDessin implements DessinJeu {
             gc.setFill(Color.RED);
             gc.fillOval(x1 *20, y *20, 20, 20);
         }
+        gc.setFill(Color.GREEN);
+        gc.fillText(laby.getPj().getVie() + "", x1 *20+7, y *20 + 15);
     }
 
 }
