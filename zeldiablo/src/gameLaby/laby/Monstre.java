@@ -18,7 +18,7 @@ public class Monstre extends Personnage {
         }
     }
 
-    public boolean attaquer(int degat) {
+    public boolean attaquer() {
 
         int heroX = this.laby.pj.x;
         int heroY = this.laby.pj.y;
@@ -45,7 +45,7 @@ public class Monstre extends Personnage {
     @Override
     public void deplacer(String action) {
 
-        if (attaquer(1)) {
+        if (attaquer()) {
             return;
         }
 
