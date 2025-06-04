@@ -19,17 +19,8 @@ Au lancement du jeu, une amulette est placée sur une case vide du labyrinthe. L
     // diagramme fait par Rémi
    // code fait par Rémi
 
-3. Fantôme -- Mis en pause, le temps d'adapter le jeu pour le faire fonctionner avec plusieurs monstres
-- Descriptif :
-Le labyrinthe dispose d'un nouveau type de monstre : les fantômes.
-- Critères de validation :
-    • Les fantômes peuvent traverser des murs mais pas les autres personnages (lesautres monstres ou le héros)
-    • Les autres monstres continuent à être bloqués par des murs.
-    • Les attaques des fantômes fonctionnent de la même manière que les attaques des monstres de base
 
-// diagramme fait par Luca
-
-4. Acquisition de l'amulette
+3. Acquisition de l'amulette
 -Descriptif : Dés que le joueur demande à déplacer le héros sur l'amulette, le héros se déplace et prend l'amulette.
 -Critères de validation:
 • L'amulette n'est plus sur le plateau (et n'est plus affichée).
@@ -37,7 +28,7 @@ Le labyrinthe dispose d'un nouveau type de monstre : les fantômes.
 • Un monstre ne récupère pas l'amulette
 //Diagramme et code fait par Rémi
 
-5. Fin du jeu : Victoire du Héros
+4. Fin du jeu : Victoire du Héros
 -Descriptif : Une fois que le héros a pris l'amulette, il peut retourner à l'entrée du labyrinthe et
 remporter le jeu.
 -Critères de validation:

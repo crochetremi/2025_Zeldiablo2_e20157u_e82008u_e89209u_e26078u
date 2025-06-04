@@ -8,7 +8,7 @@
     }
 
     interface DessinJeu{
-    dessinerJeu(Jeu jeu, Canvas canvas) :
+    +dessinerJeu(Jeu jeu, Canvas canvas) :
     }'/
 
     /'class Main {
@@ -20,11 +20,11 @@
     }'/
 
     /'class LabyJeu {
-        '+laby : Labyrinthe
-        +perso : Personnage
-        +monstre : Personnage
-        +LabyJeu():
-        +LabyJeu(String):
+        '-laby : Labyrinthe
+        -perso : Personnage
+        -monstre : Personnage
+        -LabyJeu():
+        -LabyJeu(String):
         +update(double secondes, Clavier clavier) : void
         +init() : void
         +etreFini() : boolean
@@ -45,17 +45,17 @@
         +{static} GAUCHE : String = "Gauche"
         +{static} DROITE : String = "Droite"
         '/
-        +murs : boolean[][]
-        +jeuEnCours: boolean
-        +caseDepart : int[]
+        -murs : boolean[][]
+        -jeuEnCours: boolean
+        -caseDepart : int[]
         +Labyrinthe(String nom)
         +{static} getSuivant(int x, int y, String action) : int[]
         +etreFini() : boolean
     }
 
         abstract class Personnage {
-            x: int
-            y: int
+            -x: int
+            -y: int
             +Personnage(int dx, int dy)
             +setLaby(Labyrinthe): void
             +{abstract} deplacer(String action) : void
@@ -64,7 +64,7 @@
 
 
     class Heros {
-        + amulettePossedee : boolean
+        -amulettePossedee : boolean
         +Heros(int dx, int dy)
         +deplacer(String action) : void
         +subirDegats(int) : int
@@ -91,8 +91,8 @@
 
 
     class Objet{
-        x: int
-        y: int
+        -x: int
+        -y: int
         +Objet(int dx, int dy)
         +setLaby(Labyrinthe): void
         +etrePresent(int dx, int dy) boolean
