@@ -138,11 +138,11 @@ DessinJeu <|.. LabyDessin'/
 Personnage <|-- Heros
 Personnage <|-- Monstre
 
-Labyrinthe "1" <-- "1" Heros : pj
-Labyrinthe "1" <-- "1" Bestiaire : monstres
+Labyrinthe "1" --> "1" Heros : pj
+Labyrinthe "1" --> "1" Bestiaire : monstres
 
-Bestiaire "1" <-- "*" Monstre : monstres
+Bestiaire "1" --> "*" Monstre : monstres
 
 Objet <|-- Amulette
-Labyrinthe "1" <-- "1" Amulette : amu
+Labyrinthe "1" --> "1" Amulette : amu
 @enduml

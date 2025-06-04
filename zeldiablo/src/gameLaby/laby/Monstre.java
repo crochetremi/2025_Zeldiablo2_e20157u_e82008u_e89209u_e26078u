@@ -187,7 +187,6 @@ public class Monstre extends Personnage {
         }
 
         int index = 0;
-        int maxProfondeur = 80; // empêche de boucler à l'infini
 
         while (index < file.size()) {
             int[] courant = file.get(index++);
@@ -198,8 +197,6 @@ public class Monstre extends Personnage {
             if (cx == getLaby().getPj().getX() && cy == getLaby().getPj().getY()) {
                 return directionInitiale[cx][cy];
             }
-
-            if (profondeur >= maxProfondeur) continue;
 
             for (String dir : directions) {
                 int[] voisin = Labyrinthe.getSuivant(cx, cy, dir);
