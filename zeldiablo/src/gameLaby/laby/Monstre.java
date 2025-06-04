@@ -1,5 +1,7 @@
 package gameLaby.laby;
 
+import java.util.ArrayList;
+
 public class Monstre extends Personnage {
     public Monstre(int dx, int dy) {
         super(dx, dy, 2);
@@ -108,4 +110,69 @@ public class Monstre extends Personnage {
             return new int[]{0, diffx};
         }
     }
+
+
+    public void deplacerIntelligent(int x, int y) {
+
+        String action = choixDeplacerIntelligent(x, y);
+
+        this.deplacer(action);
+
+    }
+
+    public String choixDeplacerIntelligent(int x, int y) {
+        String[] directions = {Labyrinthe.HAUT, Labyrinthe.BAS, Labyrinthe.GAUCHE, Labyrinthe.DROITE};
+
+        ArrayList<int[]> file = new ArrayList<>();
+        boolean[][] visites = new boolean[laby.getLength()][laby.getLengthY()];
+        String[][] directionInitiale = new String[laby.getLength()][laby.getLengthY()];
+
+        // on regarde les 4 cases autour du monstre
+        for (String d : directions) {
+            int[] suivante = Labyrinthe.getSuivant(x, y, d);
+            int suivant_x = suivante[0];
+            int suivant_y = suivante[1];
+
+            if (estValide(suivant_x, suivant_y) && !laby.monstres.occupeParUnMonstre(suivant_x, suivant_y, this)) {
+                file.add(new int[]{suivant_x, suivant_y, 1});
+                directionInitiale[suivant_x][suivant_y] = d;
+                visites[suivant_x][suivant_y] = true;
+            }
+        }
+
+        int index = 0;
+        int maxProfondeur = 80; // empêche de boucler à l'infini
+
+        while (index < file.size()) {
+            int[] courant = file.get(index++);
+            int cx = courant[0];
+            int cy = courant[1];
+            int profondeur = courant[2];
+
+            if (cx == laby.pj.x && cy == laby.pj.y) {
+                return directionInitiale[cx][cy];
+            }
+
+            if (profondeur >= maxProfondeur) continue;
+
+            for (String dir : directions) {
+                int[] voisin = Labyrinthe.getSuivant(cx, cy, dir);
+                int vx = voisin[0];
+                int vy = voisin[1];
+
+                if (estValide(vx, vy) && !visites[vx][vy] && !laby.monstres.occupeParUnMonstre(vx, vy, this)) {
+                    file.add(new int[]{vx, vy, profondeur + 1});
+                    directionInitiale[vx][vy] = directionInitiale[cx][cy];
+                    visites[vx][vy] = true;
+                }
+            }
+        }
+
+        return Labyrinthe.HAUT;
+    }
+
+    private boolean estValide(int x, int y) {
+        return x >= 0 && x < laby.getLength() && y >= 0 && y < laby.getLengthY() && !laby.getMur(x, y);
+    }
+
 }

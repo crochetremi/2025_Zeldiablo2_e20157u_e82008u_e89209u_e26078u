@@ -25,12 +25,14 @@ public class LabyJeu implements Jeu {
     public void update(double secondes, Clavier clavier) {
 
         if(this.laby.jeuEnCours == true){
-            int prob = (int) (Math.random() * 100);
+            /*int prob = (int) (Math.random() * 100);
             if(prob < 75) {
                 laby.monstres.deplacerMontresVersHeros();
             } else if(prob < 90) {
                 laby.monstres.deplacerMontresAleatoire();
-            }
+            }*/
+
+            laby.monstres.deplacerMonstresIntelligent();
 
             if(clavier.bas){
                 laby.pj.deplacer(Labyrinthe.BAS);
