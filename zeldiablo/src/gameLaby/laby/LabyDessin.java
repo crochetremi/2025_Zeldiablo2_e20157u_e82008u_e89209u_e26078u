@@ -16,7 +16,17 @@ import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 
+/**
+ * Classe responsable du rendu graphique du jeu de labyrinthe.
+ * Cette classe implémente l'interface DessinJeu pour gérer l'affichage
+ * du labyrinthe, du joueur, des monstres et de l'amulette.
+ */
 public class LabyDessin implements DessinJeu {
+    /**
+     * 
+     * @param jeu Le jeu à dessiner
+     * @param canvas Le canvas sur lequel dessiner
+     */
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
 
@@ -68,6 +78,12 @@ public class LabyDessin implements DessinJeu {
 
     }}
 
+    /**
+     * Affiche l'écran de victoire lorsque le joueur remplit les conditions de victoire.
+     * Crée une nouvelle fenêtre avec un message de félicitations et un bouton pour quitter le jeu.
+     * 
+     * @param canvas Le canvas sur lequel le jeu était affiché
+     */
     public void victoire(Canvas canvas){
 
         //Crée le canva
