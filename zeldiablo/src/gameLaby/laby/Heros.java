@@ -3,12 +3,26 @@ package gameLaby.laby;
 public class Heros extends Personnage {
 
     public boolean possedeeAmulette;
-
+    /**
+     * Crée un nouveau héros avec une position initiale spécifiée.
+     * Le héros est initialisé avec 5 points de vie et sans amulette.
+     *
+     * @param dx la coordonnée x initiale du héros dans le labyrinthe
+     * @param dy la coordonnée y initiale du héros dans le labyrinthe
+     */
     public Heros(int dx, int dy) {
         super(dx, dy, 5);
         this.possedeeAmulette = false;
     }
 
+    /**
+     * Déplace le héros vers une nouvelle position dans le labyrinthe en fonction
+     * de l'action spécifiée. Le déplacement ne s'effectue que si la case suivante n'est pas un mur et ne contient pas de monstre.
+     * Si un déplacement a lieu et que la nouvelle position contient une amulette, celle-ci
+     * est récupérée.
+     *
+     * @param action une chaîne décrivant la direction du déplacement ("haut", "bas", "gauche", "droite")
+     */
     @Override
     public void deplacer(String action) {
         // case courante
@@ -52,6 +66,13 @@ public class Heros extends Personnage {
 
     }
 
+    /**
+     * Vérifie si les conditions de victoire du jeu sont remplies.
+     * Un héros remplit les conditions de victoire s'il possède l'amulette
+     * et s'il se trouve sur la case de départ du labyrinthe.
+     *
+     * @return true si les conditions de victoire sont satisfaites, false sinon
+     */
     public boolean remplirConditionVictoire(){
 
         boolean remplir = false;
@@ -64,8 +85,12 @@ public class Heros extends Personnage {
         return remplir;
     }
 
-    public boolean getAmulette(){
+    /**
+     * Retourne l'état de possession de l'amulette par le héros.
+     *
+     * @return true si le héros possède l'amulette, false sinon
+     */
+    public boolean getAmulette() {
         return this.possedeeAmulette;
     }
-
 }

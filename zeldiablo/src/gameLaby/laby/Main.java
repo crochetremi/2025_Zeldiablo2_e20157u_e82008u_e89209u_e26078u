@@ -3,9 +3,16 @@ package gameLaby.laby;
 import java.io.IOException;
 
 /**
- * charge et affiche un labyrinthe
+ * Classe principale qui gère le chargement et l'affichage d'un labyrinthe.
+ * Cette classe permet de charger un labyrinthe à partir d'un fichier texte
+ * et de l'afficher dans la console.
  */
 public class Main {
+    /**
+     * Point d'entrée principal du programme.
+     * Charge un labyrinthe à partir d'un fichier texte et l'affiche dans la console.
+     * Le labyrinthe est représenté par des 'X' pour les murs et des '.' pour les espaces vides.
+   */
     public static void main(String[] args) throws IOException {
 
         // charge le labyrinthe

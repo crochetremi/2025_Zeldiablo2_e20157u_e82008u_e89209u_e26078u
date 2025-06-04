@@ -1,0 +1,147 @@
+@startuml
+
+
+    /'interface Jeu {
+            +update(double secondes, Clavier clavier) : void
+            +init() : void
+            +etreFini() : boolean
+    }
+
+    interface DessinJeu{
+    dessinerJeu(Jeu jeu, Canvas canvas) :
+    }'/
+
+    /'class Main {
+        +{static} main(String[] args) : void
+    }'/
+
+    /'class MainLaby {
+        +{static} main(String[] args) : void
+    }'/
+
+    /'class LabyJeu {
+        '+laby : Labyrinthe
+        +perso : Personnage
+        +monstre : Personnage
+        +LabyJeu():
+        +LabyJeu(String):
+        +update(double secondes, Clavier clavier) : void
+        +init() : void
+        +etreFini() : boolean
+    }
+
+    class LabyDessin {
+        +dessinerJeu(Jeu jeu, Canvas canvas) : void
+    }'/
+
+    class Labyrinthe {
+        /'
+        +{static} MUR : char = 'X'
+        +{static} PJ : char = 'P'
+        +{static} M : char = 'M'
+        +{static} VIDE : char = '.'
+        +{static} HAUT : String = "Haut"
+        +{static} BAS : String = "Bas"
+        +{static} GAUCHE : String = "Gauche"
+        +{static} DROITE : String = "Droite"
+        '/
+        +murs : boolean[][]
+        +jeuEnCours: boolean
+        +caseDepart : int[]
+        +Labyrinthe(String nom)
+        +{static} getSuivant(int x, int y, String action) : int[]
+        +etreFini() : boolean
+    }
+
+        abstract class Personnage {
+            x: int
+            y: int
+            +Personnage(int dx, int dy)
+            +setLaby(Labyrinthe): void
+            +{abstract} deplacer(String action) : void
+            +etrePresent(int dx, int dy) boolean
+        }
+
+
+    class Heros {
+        + amulettePossedee : boolean
+        +Heros(int dx, int dy)
+        +deplacer(String action) : void
+        +subirDegats(int) : int
+        +recupererAmulette(): void
+        +remplirConditionVictoire() : boolean
+    }
+
+    class Monstre {
+        +Monstre(int dx, int dy)
+        +deplacer(String action) : void
+        +deplacementAleatoire() : String
+        +deplacerAleatoire():
+        +attaquer():
+        +choisirDeplacement(): String
+        +calculerDistance():int[]
+    }
+
+    class Bestiaire{
+        +ajouterMonstre(Monstre): void
+        +deplacerMonstreAleatoire() : void
+        +deplacerMonstresVersHeros():
+        +occupeParUnMonstre(int,int,Monstre) : boolean
+    }
+
+
+    class Objet{
+        x: int
+        y: int
+        +Objet(int dx, int dy)
+        +setLaby(Labyrinthe): void
+        +etrePresent(int dx, int dy) boolean
+    }
+
+    class Amulette{
+        Amulette(int,int)
+    }
+
+
+
+package "moteurJeu" {
+    interface Jeu {
+        +update(double secondes, Clavier clavier) : void
+        +etreFini() : boolean
+    }
+
+    interface DessinJeu {
+        +dessinerJeu(Jeu jeu, Canvas canvas) : void
+    }
+
+    class Clavier {
+        +bas : boolean
+        +haut : boolean
+        +gauche : boolean
+        +droite : boolean
+    }
+
+    class MoteurJeu {
+        +{static} setTaille(int width, int height) : void
+        +{static} setFPS(int fps) : void
+        +{static} launch(Jeu jeu, DessinJeu dessin) : void
+    }
+}
+
+remove moteurJeu
+
+
+/'Jeu <|.. LabyJeu
+DessinJeu <|.. LabyDessin'/
+
+Personnage <|-- Heros
+Personnage <|-- Monstre
+
+Labyrinthe "1" <-- "1" Heros : pj
+Labyrinthe "1" <-- "1" Bestiaire : monstres
+
+Bestiaire "1" <-- "*" Monstre : monstres
+
+Objet <|-- Amulette
+Labyrinthe "1" <-- "1" Amulette : amu
+@enduml

@@ -7,60 +7,82 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * classe labyrinthe. represente un labyrinthe avec
- * <ul> des murs </ul>
- * <ul> un personnage (x,y) </ul>
+ * Classe représentant un labyrinthe de jeu.
  */
 public class Labyrinthe {
 
     public boolean jeuEnCours = true;
 
     /**
-     * Constantes char
+     * Caractère représentant un mur dans le fichier de labyrinthe
      */
     public static final char MUR = 'X';
-    public static final char PJ = 'P';
-    public static final char VIDE = '.';
-    public static final char M = 'M';
-    public static final char A = 'A';
     /**
-     * constantes actions possibles
+     * Caractère représentant le personnage joueur dans le fichier de labyrinthe
+     */
+    public static final char PJ = 'P';
+    /**
+     * Caractère représentant une case vide dans le fichier de labyrinthe
+     */
+    public static final char VIDE = '.';
+    /**
+     * Caractère représentant un monstre dans le fichier de labyrinthe
+     */
+    public static final char M = 'M';
+    /**
+     * Caractère représentant l'amulette dans le fichier de labyrinthe
+     */
+    public static final char A = 'A';
+
+    /**
+     * Constante pour le mouvement vers le haut
      */
     public static final String HAUT = "Haut";
+    /**
+     * Constante pour le mouvement vers le bas
+     */
     public static final String BAS = "Bas";
+    /**
+     * Constante pour le mouvement vers la gauche
+     */
     public static final String GAUCHE = "Gauche";
+    /**
+     * Constante pour le mouvement vers la droite
+     */
     public static final String DROITE = "Droite";
 
     /**
-     * attribut du personnage
+     * Le héros du jeu
      */
     public Heros pj;
 
     /**
-     * attribut du monstre
+     * La collection de monstres présents dans le labyrinthe
      */
     public Bestiaire monstres = new Bestiaire();
 
     /**
-     * Attribut de l'amulette
+     * L'amulette à collecter dans le labyrinthe
      */
     public Amulette amu;
 
-
     /**
-     * les murs du labyrinthe
+     * Tableau 2D représentant les murs du labyrinthe
      */
     public boolean[][] murs;
 
+    /**
+     * Position de départ du héros dans le labyrinthe
+     */
     public final int[] caseDepart;
 
     /**
-     * retourne la case suivante selon une actions
+     * Calcule la case suivante en fonction d'une action de déplacement.
      *
-     * @param x      case depart
-     * @param y      case depart
-     * @param action action effectuee
-     * @return case suivante
+     * @param x      Coordonnée x de la case de départ
+     * @param y      Coordonnée y de la case de départ
+     * @param action Action de déplacement (HAUT, BAS, GAUCHE, DROITE)
+     * @return Tableau contenant les nouvelles coordonnées [x, y]
      */
     static int[] getSuivant(int x, int y, String action) {
         switch (action) {
@@ -88,11 +110,9 @@ public class Labyrinthe {
     }
 
     /**
-     * charge le labyrinthe
-     *
-     * @param nom nom du fichier de labyrinthe
-     * @return labyrinthe cree
-     * @throws IOException probleme a la lecture / ouverture
+     * Constructeur du labyrinthe.
+     * Charge et initialise le labyrinthe à partir d'un fichier texte.
+     * @param nom Chemin vers le fichier contenant la définition du labyrinthe
      */
     public Labyrinthe(String nom) throws IOException {
         // ouvrir fichier
@@ -175,9 +195,10 @@ public class Labyrinthe {
 
 
     /**
-     * jamais fini
+     * Vérifie si le jeu est terminé.
+     * Cette méthode est surchargée dans LabyJeu pour une implémentation spécifique.
      *
-     * @return fin du jeu
+     * @return false par défaut
      */
     public boolean etreFini() {
         boolean b = false;
@@ -200,28 +221,29 @@ public class Labyrinthe {
     // ##################################
 
     /**
-     * return taille selon Y
+     * Retourne la hauteur du labyrinthe (nombre de lignes).
      *
-     * @return
+     * @return Nombre de lignes du labyrinthe
      */
     public int getLengthY() {
         return murs[0].length;
     }
 
     /**
-     * return taille selon X
+     * Retourne la largeur du labyrinthe (nombre de colonnes).
      *
-     * @return
+     * @return Nombre de colonnes du labyrinthe
      */
     public int getLength() {
         return murs.length;
     }
 
     /**
-     * return mur en (i,j)
-     * @param x
-     * @param y
-     * @return
+     * Vérifie si une case donnée contient un mur.
+     *
+     * @param x Coordonnée x de la case à vérifier
+     * @param y Coordonnée y de la case à vérifier
+     * @return true si la case contient un mur, false sinon
      */
     public boolean getMur(int x, int y) {
         // utilise le tableau de boolean

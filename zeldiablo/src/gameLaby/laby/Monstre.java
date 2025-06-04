@@ -2,16 +2,32 @@ package gameLaby.laby;
 
 import java.util.ArrayList;
 
+/**
+ * Classe représentant un monstre dans le jeu.
+ * Un monstre est un personnage qui peut se déplacer aléatoirement ou suivre le héros.
+ */
 public class Monstre extends Personnage {
+    /**
+     * Constructeur d'un monstre.
+     * @param dx Position x initiale du monstre
+     * @param dy Position y initiale du monstre
+     */
     public Monstre(int dx, int dy) {
         super(dx, dy, 2);
     }
 
+    /**
+     * Génère une direction de déplacement aléatoire.
+     * @return Une direction aléatoire parmi HAUT, BAS, GAUCHE, DROITE
+     */
     public String deplacementAleatoire(){
         String[] actions = {Labyrinthe.HAUT, Labyrinthe.BAS, Labyrinthe.GAUCHE, Labyrinthe.DROITE};
         return actions[(int) (Math.random() * actions.length)];
     }
 
+    /**
+     * Déplace le monstre aléatoirement avec une probabilité de 50%.
+     */
     public void deplacerAleatoire(){
         int probabilite = (int) (Math.random() * 100);
         if(probabilite < 50) {
@@ -20,6 +36,11 @@ public class Monstre extends Personnage {
         }
     }
 
+    /**
+     * Tente d'attaquer le héros si celui-ci est à portée.
+     * @param degat Les dégâts à infliger au héros
+     * @return true si l'attaque a réussi, false sinon
+     */
     public boolean attaquer(int degat) {
 
         int heroX = this.laby.pj.x;
@@ -44,6 +65,11 @@ public class Monstre extends Personnage {
 
     }
 
+    /**
+     * Déplace le monstre dans la direction spécifiée.
+     * Le monstre attaquera le héros s'il est à portée, sinon il se déplacera.
+     * @param action La direction de déplacement (HAUT, BAS, GAUCHE, DROITE)
+     */
     @Override
     public void deplacer(String action) {
 
@@ -67,11 +93,18 @@ public class Monstre extends Personnage {
 
 
 
+    /**
+     * Déplace le monstre vers le héros en utilisant l'algorithme de choix de déplacement.
+     */
     public void deplacerVersHeros() {
         String choix = choisirDeplacement();
         this.deplacer(choix);
     }
 
+    /**
+     * Choisit la direction de déplacement pour se rapprocher du héros.
+     * @return La direction choisie (HAUT, BAS, GAUCHE, DROITE)
+     */
     public String choisirDeplacement() {
         int[] calcul = calculerDistance();
 
@@ -91,6 +124,11 @@ public class Monstre extends Personnage {
     }
 
 
+    /**
+     * Calcule la distance entre le monstre et le héros.
+     * @return Un tableau contenant [0, diffx] si la distance horizontale est plus grande,
+     *         ou [1, diffy] si la distance verticale est plus grande
+     */
     public int[] calculerDistance() {
 
         // position du personnage et du monstre
