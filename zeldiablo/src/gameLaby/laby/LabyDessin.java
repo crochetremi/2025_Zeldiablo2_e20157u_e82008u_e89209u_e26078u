@@ -77,7 +77,7 @@ public class LabyDessin implements DessinJeu {
             gc.setFill(Color.RED);
             Font customFont = new Font("Arial",60);
             gc.setFont(customFont);
-            gc.fillText("VICTOIRE", 350, 450);
+            gc.fillText("VICTOIRE", 250, 400);
 
         }
 
