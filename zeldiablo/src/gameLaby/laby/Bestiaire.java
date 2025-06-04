@@ -38,18 +38,24 @@ public class Bestiaire {
         }
     }
 
+    /**
+     * Déplace tous les monstres de la liste de monstres vers le héros.
+     * Chaque monstre utilise sa méthode interne pour ajuster sa position en direction du héros.
+     */
     public void deplacerMontresVersHeros() {
         for (int i = 0; i < listeMonstres.size(); i++) {
             this.listeMonstres.get(i).deplacerVersHeros();
         }
     }
 
+    //Déplace tout les monstres de manière à ce qu'ils aillent vers le héros de manière intelligente
     public void deplacerMonstresIntelligent() {
         for (int i = 0; i < listeMonstres.size(); i++) {
             this.listeMonstres.get(i).deplacerIntelligent(this.listeMonstres.get(i).getX(),this.listeMonstres.get(i).getY());
         }
     }
 
+    //Renvoie vrai si la case(x,y) est occupé par un monstre
     public boolean occupeParUnMonstre(int x, int y, Monstre m) {
         for (int i=0; i<listeMonstres.size(); i++) {
             if (listeMonstres.get(i) != m && listeMonstres.get(i).getX() == x && listeMonstres.get(i).getY() == y) {
@@ -59,6 +65,7 @@ public class Bestiaire {
         return false;
     }
 
+    //getter
     public ArrayList<Monstre> getListeMonstres() {
         return listeMonstres;
     }

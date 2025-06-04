@@ -271,7 +271,7 @@ public class Labyrinthe {
         return murs;
     }
 
-    public boolean getJeuEnCours(){
-        return this.jeuEnCours;
+    public boolean getJeuEnCours() {
+        return jeuEnCours;
     }
 }

@@ -40,11 +40,9 @@ public class Monstre extends Personnage {
 
     /**
      * Tente d'attaquer le héros si celui-ci est à portée.
-     *
-     * @param degat Les dégâts à infliger au héros
-     * @return true si l'attaque a réussi, false sinon
+     ** @return true si l'attaque a réussi, false sinon
      */
-    public boolean attaquer(int degat) {
+    public boolean attaquer() {
 
 
         int heroX = this.getLaby().getPj().getX();
@@ -63,7 +61,7 @@ public class Monstre extends Personnage {
             } else {
                 this.getLaby().getPj().setVie(0);
             }
-            System.out.println("Vie du héros après attaque : " + this.getVie());
+            System.out.println("Vie du héros après attaque : " + this.getLaby().getPj().getVie());
             return true;
         }
         return false;
@@ -79,7 +77,7 @@ public class Monstre extends Personnage {
     @Override
     public void deplacer(String action) {
 
-        if (attaquer(1)) {
+        if (attaquer()) {
             return;
         }
 
