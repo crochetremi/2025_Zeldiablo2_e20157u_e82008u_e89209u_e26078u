@@ -4,7 +4,7 @@ public class Objet {
     /**
      * position du personnage
      */
-    int x, y;
+    private int x, y;
 
     /**
      * labyrinthe dans lequel se trouve le personnage

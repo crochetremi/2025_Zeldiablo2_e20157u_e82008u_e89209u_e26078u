@@ -2,7 +2,7 @@ package gameLaby.laby;
 
 public class Heros extends Personnage {
 
-    public boolean possedeeAmulette;
+    private boolean possedeeAmulette;
     /**
      * Crée un nouveau héros avec une position initiale spécifiée.
      * Le héros est initialisé avec 5 points de vie et sans amulette.
@@ -26,40 +26,45 @@ public class Heros extends Personnage {
     @Override
     public void deplacer(String action) {
         // case courante
-        int[] courante = {this.x, this.y};
+        int[] courante = {this.getX(), this.getY()};
 
         // calcule case suivante
         int[] suivante = Labyrinthe.getSuivant(courante[0], courante[1], action);
 
         // si c'est pas un mur, on effectue le deplacement
         boolean cbon = true;
-        if (!this.laby.getMur(suivante[0], suivante[1])) {
+        Labyrinthe laby = this.getLaby();
+        if (!laby.getMur(suivante[0], suivante[1])) {
             //vérifie la position du monstre
-            for(int i = 0; i< this.laby.monstres.monstres.size(); i++) {
-                if((suivante[0] == this.laby.monstres.monstres.get(i).x && suivante[1] == this.laby.monstres.monstres.get(i).y)){
+            for(int i = 0; i< laby.getMonstres().getListeMonstres().size(); i++) {
+                Monstre m = this.getLaby().getMonstres().getListeMonstres().get(i);
+                if((suivante[0] == m.getX() && suivante[1] == m.getY())){
                     cbon = false;
                 }
             }
             if(cbon) {
-                this.x = suivante[0];
-                this.y = suivante[1];
+                this.setX(suivante[0]);
+                this.setY(suivante[1]);
             }
         }
         recupererAmulette();
     }
 
     public int subirDegats(int degats) {
-       return this.vie -= degats;
+        this.setVie(this.getVie()-degats);
+        int subis = this.getVie();
+        return subis;
+
     }
 
     public boolean etreVivant() {
-        return this.vie > 0;
+        return this.getVie() > 0;
     }
 
     public void recupererAmulette(){
 
         if(this.etreVivant()){
-            if(this.laby.pj.etrePresent(this.laby.amu.getX(), this.laby.amu.getY())){
+            if(this.getLaby().getPj().etrePresent(this.getLaby().getAmu().getX(), this.getLaby().getAmu().getY())){
                 this.possedeeAmulette = true;
             }
         }
@@ -78,7 +83,7 @@ public class Heros extends Personnage {
         boolean remplir = false;
 
         if(this.possedeeAmulette){
-            if(this.laby.pj.etrePresent(this.laby.caseDepart[0], this.laby.caseDepart[1])){
+            if(this.getLaby().getPj().etrePresent(this.getLaby().getCaseDepart()[0], this.getLaby().getCaseDepart()[1])){
                 remplir = true;
             }
         }

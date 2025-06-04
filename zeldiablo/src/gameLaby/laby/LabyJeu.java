@@ -1,6 +1,5 @@
 package gameLaby.laby;
 
-import javafx.application.Platform;
 import moteurJeu.Clavier;
 import moteurJeu.Jeu;
 
@@ -12,10 +11,10 @@ import moteurJeu.Jeu;
 public class LabyJeu implements Jeu {
 
     /** Le labyrinthe du jeu */
-    private Labyrinthe laby;
+    private Labyrinthe pj;
 
     public Labyrinthe getLaby() {
-        return laby;
+        return pj;
     }
 
     /**
@@ -31,7 +30,7 @@ public class LabyJeu implements Jeu {
      */
     public LabyJeu(String fichier) {
         try{
-            this.laby = new Labyrinthe(fichier);
+            this.pj = new Labyrinthe(fichier);
         }
         catch (Exception e){
             System.out.println("erreur chargement labyrinthe");
@@ -46,8 +45,10 @@ public class LabyJeu implements Jeu {
      */
     @Override
     public void update(double secondes, Clavier clavier) {
-
-        if(this.laby.jeuEnCours == true){
+    
+        Heros pj = this.getLaby().getPj();
+        
+        if(this.getLaby().getJeuEnCours() == true){
             /*int prob = (int) (Math.random() * 100);
             if(prob < 75) {
                 laby.monstres.deplacerMontresVersHeros();
@@ -55,22 +56,22 @@ public class LabyJeu implements Jeu {
                 laby.monstres.deplacerMontresAleatoire();
             }*/
 
-            laby.monstres.deplacerMonstresIntelligent();
+            this.getLaby().getMonstres().deplacerMonstresIntelligent();
 
             if(clavier.bas){
-                laby.pj.deplacer(Labyrinthe.BAS);
+                pj.deplacer(Labyrinthe.BAS);
 
             }
             if(clavier.haut){
-                laby.pj.deplacer(Labyrinthe.HAUT);
+                pj.deplacer(Labyrinthe.HAUT);
 
             }
             if(clavier.gauche){
-                laby.pj.deplacer(Labyrinthe.GAUCHE);
+                pj.deplacer(Labyrinthe.GAUCHE);
 
             }
             if(clavier.droite){
-                laby.pj.deplacer(Labyrinthe.DROITE);
+                pj.deplacer(Labyrinthe.DROITE);
 
             }
         }
@@ -83,7 +84,7 @@ public class LabyJeu implements Jeu {
      */
     public void init() {
         try{
-            this.laby = new Labyrinthe("zeldiablo/labySimple/labybig.txt");
+            this.pj = new Labyrinthe("zeldiablo/labySimple/labybig.txt");
         }
         catch (Exception e){
             System.out.println("erreur chargement labyrinthe");
@@ -96,6 +97,6 @@ public class LabyJeu implements Jeu {
      * @return true si le jeu est terminé, false sinon
      */
     public boolean etreFini() {
-        return this.laby.etreFini();
+        return this.getLaby().etreFini();
     }
 }

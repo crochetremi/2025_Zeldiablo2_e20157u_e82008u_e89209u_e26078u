@@ -77,8 +77,8 @@ class TestLaby {
     @Test
     void testDeplacerMonstreVersMur() {
         // Sauvegarde position initiale du monstre
-        int initialX = laby.monstre.x;
-        int initialY = laby.monstre.y;
+        int initialX = laby.monstres.monstres.get(0).x;
+        int initialY = laby.monstres.monstres.get(0).y;
 
         // Force le déplacement vers un mur si possible
         String[] directions = {Labyrinthe.HAUT, Labyrinthe.BAS, Labyrinthe.GAUCHE, Labyrinthe.DROITE};
@@ -86,15 +86,15 @@ class TestLaby {
             int[] suivant = Labyrinthe.getSuivant(initialX, initialY, direction);
             if (laby.murs[suivant[0]][suivant[1]]) {
                 // Simule un déplacement forcé vers le mur
-                int[] courante = {laby.monstre.x, laby.monstre.y};
+                int[] courante = {laby.monstres.monstres.get(0).x, laby.monstres.monstres.get(0).y};
                 int[] suivante = Labyrinthe.getSuivant(courante[0], courante[1], direction);
                 if (!laby.murs[suivante[0]][suivante[1]]) {
-                    laby.monstre.x = suivante[0];
-                    laby.monstre.y = suivante[1];
+                    laby.monstres.monstres.get(0).x = suivante[0];
+                    laby.monstres.monstres.get(0).y = suivante[1];
                 }
                 // Vérifie que le monstre n'a pas bougé
-                assertEquals(initialX, laby.monstre.x);
-                assertEquals(initialY, laby.monstre.y);
+                assertEquals(initialX, laby.monstres.monstres.get(0).x);
+                assertEquals(initialY, laby.monstres.monstres.get(0).y);
                 break;
             }
         }

@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class Labyrinthe {
 
-    public boolean jeuEnCours = true;
+    private boolean jeuEnCours = true;
 
     /**
      * Caractère représentant un mur dans le fichier de labyrinthe
@@ -54,27 +54,27 @@ public class Labyrinthe {
     /**
      * Le héros du jeu
      */
-    public Heros pj;
+    private Heros pj;
 
     /**
      * La collection de monstres présents dans le labyrinthe
      */
-    public Bestiaire monstres = new Bestiaire();
+    private Bestiaire monstres = new Bestiaire();
 
     /**
      * L'amulette à collecter dans le labyrinthe
      */
-    public Amulette amu;
+    private Amulette amu;
 
     /**
      * Tableau 2D représentant les murs du labyrinthe
      */
-    public boolean[][] murs;
+    private boolean[][] murs;
 
     /**
      * Position de départ du héros dans le labyrinthe
      */
-    public final int[] caseDepart;
+    private final int[] caseDepart;
 
     /**
      * Calcule la case suivante en fonction d'une action de déplacement.
@@ -186,8 +186,9 @@ public class Labyrinthe {
         bfRead.close();
 
         if (this.pj != null) this.pj.setLaby(this);
-        for(int i = 0; i < this.monstres.monstres.size(); i ++) {
-            if (this.monstres.monstres.get(i) != null) this.monstres.monstres.get(i).setLaby(this);
+        for(int i = 0; i < this.getMonstres().getListeMonstres().size(); i ++) {
+            Monstre monstre = this.getMonstres().getListeMonstres().get(i);
+            if (monstre != null) monstre.setLaby(this);
         }
 
 
@@ -250,4 +251,27 @@ public class Labyrinthe {
         return this.murs[x][y];
     }
 
+    public Heros getPj() {
+        return pj;
+    }
+
+    public Bestiaire getMonstres() {
+        return monstres;
+    }
+
+    public Amulette getAmu() {
+        return amu;
+    }
+
+    public int[] getCaseDepart() {
+        return caseDepart;
+    }
+
+    public boolean[][] getMurs() {
+        return murs;
+    }
+
+    public boolean getJeuEnCours(){
+        return this.jeuEnCours;
+    }
 }

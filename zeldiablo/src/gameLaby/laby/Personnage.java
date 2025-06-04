@@ -4,13 +4,13 @@ public abstract class Personnage {
     /**
      * position du personnage
      */
-    int x, y;
-    int vie;
+    private int x, y;
+    private int vie;
 
     /**
      * labyrinthe dans lequel se trouve le personnage
      */
-    Labyrinthe laby;
+    private Labyrinthe laby;
 
     /**
      * constructeur
@@ -56,7 +56,29 @@ public abstract class Personnage {
         return this.y;
     }
 
+    public void setX(int dx) {
+        this.x = dx;
+    }
+
+    public void setY(int dy) {
+        this.y = dy;
+    }
+
     public int getVie() {
         return this.vie;
     }
+
+    public void setVie(int pv) {
+        if(pv < 0){
+            this.vie = 0;
+        }
+        else{
+            this.vie = pv;
+        }
+    }
+
+    public Labyrinthe getLaby() {
+        return laby;
+    }
+
 }
