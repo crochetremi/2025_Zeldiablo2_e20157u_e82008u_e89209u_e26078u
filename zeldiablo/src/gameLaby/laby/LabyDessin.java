@@ -42,7 +42,11 @@ public class LabyDessin implements DessinJeu {
         gc.setFill(Color.LIGHTGRAY);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
+
+
+
         Labyrinthe laby = lj.getLaby();
+
         Color c1 = Color.BLACK;
         dessinerMurs(laby, gc,c1);
 
@@ -57,7 +61,37 @@ public class LabyDessin implements DessinJeu {
         // afficher les monstres
         afficherMonstre(gc, laby);
 
+        deciderAffichageEcranVictoire(canvas, laby, gc);
 
+
+    }
+
+    private static boolean deciderAffichageEcranVictoire(Canvas canvas, Labyrinthe laby, GraphicsContext gc) {
+        if (!laby.getJeuEnCours()) {
+            // Écran de fin
+            // Remplir tout en jaune
+            gc.setFill(Color.YELLOW);
+            gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+            // Dessiner les murs en doré
+            for (int x = 0; x < laby.getLength(); x++) {
+                for (int y = 0; y < laby.getLengthY(); y++) {
+                    if (laby.getMur(x,y)) {
+                        gc.setFill(Color.GOLD);
+                        gc.fillRect(x*20, y*20, 20, 20);
+                    }
+                }
+            }
+
+            // Afficher le message de fin en rouge
+            gc.setFill(Color.RED);
+            gc.setFont(javafx.scene.text.Font.font(30));
+            String message = laby.getPj().etreVivant() ? "VICTOIRE !" : "DÉFAITE !";
+            gc.fillText(message, canvas.getWidth()/2 - 60, canvas.getHeight()/2);
+
+            return true;
+        }
+        return false;
     }
 
     private static void dessinerMurs(Labyrinthe laby, GraphicsContext gc,Color c) {
