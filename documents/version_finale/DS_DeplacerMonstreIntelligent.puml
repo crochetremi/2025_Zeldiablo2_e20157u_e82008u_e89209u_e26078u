@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Main -> Bestiaire : deplacerMonstresIntelligent()
+activate Bestiaire
+
+Bestiaire -> Monstre : deplacerIntelligent()
+
+activate Monstre
+
+Monstre -> Monstre : choixDeplacerMonstreIntelligent
+activate Monstre
+
+Monstre <-- Monstre: String
+deactivate Monstre
+
+Bestiaire <-- Monstre
+deactivate Monstre
+
+Main <-- Bestiaire
+
+deactivate Bestiaire
+
+@enduml
