@@ -1,3 +1,5 @@
+Tous les diagrammes de classe et de séquences ont été faits avec tout le groupe, même si certains ont plus travaillé sur certains diagrammes,
+c'est pourquoi des noms sont parfois donné.
 
 ////////// Fonctionnalités version 2 \\\\\\\\\\
 
