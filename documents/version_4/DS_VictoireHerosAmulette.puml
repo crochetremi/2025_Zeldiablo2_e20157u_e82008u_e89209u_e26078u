@@ -1,31 +1,32 @@
 @startuml
-'https://plantuml.com/sequence-diagram
-
-title Victoire du heros par Amulette
+title Victoire du héros
 
 autonumber
 
 Participant "LabyJeu" as labyjeu
+Participant "Labyrinthe" as laby
 Participant "Heros" as heros
-Participant "Amulette" as amulette
 
 activate labyjeu
-labyjeu ->  heros : etreFini() :
+labyjeu -> laby : etreFini()
+activate laby
 
+laby -> heros : etreVivant()
 activate heros
-heros -> amulette : etrePresent(int, int)
-
-activate amulette
-heros <-- amulette : boolean
-deactivate amulette
-heros -> heros : setAmulette()
-activate heros
-
-heros <-- heros
+heros --> laby : true
 deactivate heros
 
-labyjeu <-- heros
-
+laby -> heros : remplirConditionVictoire()
+activate heros
+heros -> heros : getAmulette()
+activate heros
+heros --> heros : true
 deactivate heros
+heros --> laby : true
+deactivate heros
+
+laby --> labyjeu : true
+deactivate laby
+
 deactivate labyjeu
 @enduml

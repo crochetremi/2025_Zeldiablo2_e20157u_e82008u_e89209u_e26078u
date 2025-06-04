@@ -1,41 +1,43 @@
 @startuml
-'https://plantuml.com/sequence-diagram
-title Fonctionnalité : Monstre attiré par Héros
+title Déplacement vers le héros
+
 autonumber
 
-Main -> Monstre : deplacerVersHeros()
-activate Monstre
+Participant "Bestiaire" as bestiaire
+Participant "Monstre" as monstre
+Participant "Labyrinthe" as laby
+Participant "Heros" as heros
 
-Monstre -> Monstre : choisirDeplacement()
-activate Monstre
+activate bestiaire
+bestiaire -> monstre : deplacerVersHeros()
+activate monstre
 
+monstre -> monstre : calculerDistance()
+activate monstre
+monstre -> laby : getPj()
+activate laby
+laby -> heros : getX(), getY()
+activate heros
+heros --> laby : x, y
+deactivate heros
+laby --> monstre : position héros
+deactivate laby
+monstre --> monstre : [type, diff]
+deactivate monstre
 
-Monstre -> Monstre : calculerDistance()
-activate Monstre
+monstre -> monstre : choisirDeplacement()
+activate monstre
+monstre --> monstre : direction
+deactivate monstre
 
-Monstre -> Heros : getX()
-activate Heros
-Monstre <-- Heros : int
-deactivate Heros
+monstre -> monstre : deplacer(direction)
+activate monstre
 
-Monstre -> Heros : getY()
-activate Heros
-Monstre <-- Heros : int
-deactivate Heros
+monstre -> monstre : attaquer()
+monstre -> monstre : setX(), setY()
 
-Monstre <-- Monstre: int[]
-deactivate Monstre
-Monstre <-- Monstre : String action
-
-deactivate Monstre
-
-Monstre -> Monstre: deplacer(action)
-activate Monstre
-Monstre <-- Monstre: void
-
-
-deactivate Monstre
-
-Main <-- Monstre : void
-
+deactivate monstre
+monstre <-- monstre
+monstre --> bestiaire
+deactivate bestiaire
 @enduml

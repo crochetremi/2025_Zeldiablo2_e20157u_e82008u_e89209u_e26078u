@@ -1,0 +1,25 @@
+@startuml
+title Mise en place de l'amulette
+
+autonumber
+
+Participant "Labyrinthe" as laby
+Participant "Amulette" as amulette
+
+activate laby
+laby -> laby : Labyrinthe(String nom)
+activate laby
+
+laby -> amulette : new Amulette(x, y)
+activate amulette
+amulette --> laby
+deactivate amulette
+
+laby -> amulette : setLaby(this)
+activate amulette
+amulette --> laby
+deactivate amulette
+
+deactivate laby
+deactivate laby
+@enduml

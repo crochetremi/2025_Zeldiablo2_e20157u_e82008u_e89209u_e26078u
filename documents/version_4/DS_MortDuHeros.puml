@@ -1,24 +1,32 @@
 @startuml
-'https://plantuml.com/sequence-diagram
-title Fin du jeu par mort du héros
+title Fin du jeu : Mort du héros
+
 autonumber
 
-Main -> LabyJeu : update()
-activate LabyJeu
+Participant "Monstre" as monstre
+Participant "Heros" as heros
+Participant "Labyrinthe" as laby
 
-LabyJeu -> LabyJeu : etreFini()
-activate LabyJeu
+activate monstre
+monstre -> monstre : attaquer()
+activate monstre
 
-LabyJeu -> Heros : remplirConditionVictoire()
-activate Heros
-LabyJeu <-- Heros : boolean : true
-deactivate Heros
+monstre -> heros : subirDegats(1)
+activate heros
+heros --> monstre : void
+deactivate heros
 
-LabyJeu <-- LabyJeu : boolean : true
-deactivate LabyJeu
+monstre -> laby : etreFini()
+activate laby
 
-Main <-- LabyJeu : fin du jeu
+laby -> heros : etreVivant()
+activate heros
+heros --> laby : false
+deactivate heros
 
-deactivate LabyJeu
+laby --> monstre : true
+deactivate laby
 
+deactivate monstre
+deactivate monstre
 @enduml
