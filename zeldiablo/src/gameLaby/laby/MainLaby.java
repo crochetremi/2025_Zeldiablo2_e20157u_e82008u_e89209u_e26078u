@@ -10,7 +10,7 @@ import moteurJeu.MoteurJeu;
 
 public class MainLaby {
     public static void main(String[] args) {
-        int width = 800;
+        int width = 780;
         int height = 800;
         int pFPS = 10;
 

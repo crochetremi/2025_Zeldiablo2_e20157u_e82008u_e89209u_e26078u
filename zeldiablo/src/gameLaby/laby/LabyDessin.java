@@ -67,7 +67,7 @@ public class LabyDessin implements DessinJeu {
     }
 
     private static boolean deciderAffichageEcranVictoire(Canvas canvas, Labyrinthe laby, GraphicsContext gc) {
-        if (!laby.getJeuEnCours()) {
+        if (!laby.getJeuEnCours() && laby.getPj().etreVivant()) {
             // Écran de fin
             // Remplir tout en jaune
             gc.setFill(Color.YELLOW);
