@@ -1,0 +1,10 @@
+2.4 Monstres au comportement intelligent
+A chaque fois que les monstres se déplacent, ils se rapprochent dans la direction du
+héros en prenant en compte la présence des murs.
+Critères de validation
+• Avant son déplacement, le monstre détermine le meilleur chemin pour atteindre
+le héros.
+• Le monstre prend en compte les obstacles qui le concernent pour trouver le meilleur
+chemin.
+• lorsqu'il se déplace, le monstre suit effectivement le meilleur chemin et parvient
+jusqu'au héros même s'il y a des obstacles.

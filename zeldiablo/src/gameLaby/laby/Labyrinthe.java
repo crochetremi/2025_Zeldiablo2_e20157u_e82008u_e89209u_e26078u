@@ -1,5 +1,7 @@
 package gameLaby.laby;
 
+import javafx.application.Platform;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,6 +10,8 @@ import java.io.IOException;
  * Classe représentant un labyrinthe de jeu.
  */
 public class Labyrinthe {
+
+    public boolean jeuEnCours = true;
 
     /**
      * Caractère représentant un mur dans le fichier de labyrinthe
@@ -197,7 +201,19 @@ public class Labyrinthe {
      * @return false par défaut
      */
     public boolean etreFini() {
-        return false;
+        boolean b = false;
+        if( ! (this.pj.etreVivant()) ){
+            b = true;
+            Platform.exit();
+        }
+        if(this.pj.etreVivant() && this.pj.remplirConditionVictoire()){
+            b = true;
+
+        }
+        if(b == true){
+            jeuEnCours = false;
+        }
+        return b;
     }
 
     // ##################################
